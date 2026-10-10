@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | CosmicMatch</title>
+    <meta name="description" content="CosmicMatch Privacy Policy. Information about how we collect, use and protect your data on our zodiac horoscope website.">
+    <link rel="canonical" href="https://cosmicmatch.top/privacy-policy.html">
+    <meta name="robots" content="index, follow">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg,#0c0a20,#201848,#172b50);
+            color: #f0eaff;
+            background-attachment: fixed;
+            position: relative;
+        }
+        /* 星光背景 */
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top:0;left:0;
+            pointer-events:none;
+            z-index:0;
+        }
+        .star {
+            position:absolute;
+            background:#fff;
+            border-radius:50%;
+            animation: twinkle 3s infinite;
+        }
+        @keyframes twinkle {
+            0%,100% {opacity:0.2;}
+            50% {opacity:1;}
+        }
+        .container {
+            position:relative;
+            z-index:1;
+            max-width:900px;
+            margin:0 auto;
+            padding:30px 20px;
+        }
+        header {
+            text-align:center;
+            margin-bottom:40px;
+        }
+        header h1 {
+            font-size:42px;
+            color:#e2cfff;
+            text-shadow:0 0 12px #9b6cf0;
+            margin-bottom:10px;
+        }
+        header p {
+            color:#c9b8f0;
+            font-size:18px;
+        }
+        .nav-links {
+            text-align:center;
+            margin-bottom:30px;
+        }
+        .nav-links a {
+            color:#d4c0ff;
+            margin:0 12px;
+            text-decoration:none;
+        }
+        .nav-links a:hover {
+            color:#fff;
+            text-decoration:underline;
+        }
+        .policy-box {
+            background:rgba(255,255,255,0.07);
+            backdrop-filter: blur(12px);
+            border:1px solid rgba(210,180,255,0.2);
+            border-radius:20px;
+            padding:35px;
+        }
+        .policy-box h2 {
+            color:#e5d8ff;
+            margin: 28px 0 12px;
+            font-size:24px;
+        }
+        .policy-box p, .policy-box li {
+            line-height:1.7;
+            color:#e2ddf7;
+            margin-bottom:12px;
+            font-size:16px;
+        }
+        .policy-box ul {
+            padding-left:24px;
+        }
+        .policy-box h2:first-child {
+            margin-top:0;
+        }
+        footer {
+            text-align:center;
+            margin-top:60px;
+            padding:20px;
+            color:#b9a8e3;
+            font-size:14px;
+        }
+    </style>
+</head>
+<body>
+<div class="stars"></div>
+<div class="container">
+    <header>
+        <h1>CosmicMatch ✧ Privacy Policy</h1>
+        <p>Privacy information for our crystal dream horoscope site</p>
+    </header>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+    </div>
+
+    <div class="policy-box">
+        <h2>Introduction</h2>
+        <p>Welcome to CosmicMatch (cosmicmatch.top). This Privacy Policy describes how we collect, use, store and protect your information when you visit our zodiac horoscope website. By accessing this website, you agree to the terms described in this policy.</p>
+
+        <h2>Information We Collect</h2>
+        <ul>
+            <li>Anonymous browsing data: IP address, browser type, device type, pages visited, time spent on pages, referring website.</li>
+            <li>Cookies and similar tracking technologies used by website analytics and advertisement services.</li>
+            <li>We do NOT collect names, emails, phone numbers or other personal identifiable information unless you voluntarily submit them.</li>
+        </ul>
+
+        <h2>How We Use Your Information</h2>
+        <ul>
+            <li>Analyze website traffic and improve website performance and user experience.</li>
+            <li>Display relevant advertisements through third-party ad platforms such as Google AdSense.</li>
+            <li>Detect website errors, security issues and prevent abuse.</li>
+        </ul>
+
+        <h2>Cookies</h2>
+        <p>This website uses cookies. Cookies are small text files saved to your device. They help websites remember visitor preferences. You can disable or delete cookies through your browser settings. Disabling cookies may affect some website functions or ad display.</p>
+
+        <h2>Third-Party Services</h2>
+        <p>We may use third-party tools including Cloudflare Web Analytics and Google AdSense. These third parties may collect anonymous visitor data under their own privacy policies. We have no control over data collection rules of these external services.</p>
+
+        <h2>Data Security</h2>
+        <p>We use common technical measures to protect website visitor data. However, no internet transmission or electronic storage method is 100% secure. We cannot guarantee absolute security of online data.</p>
+
+        <h2>Children’s Privacy</h2>
+        <p>This site is not intended for children under 13 years old. We do not knowingly collect personal information from children under 13. If you believe we collected data from a child, please contact us to remove it.</p>
+
+        <h2>Policy Updates</h2>
+        <p>We may revise this Privacy Policy at any time. Changes take effect once published on this page. We recommend checking this page regularly.</p>
+
+        <h2>Entertainment Disclaimer</h2>
+        <p>All horoscope content on CosmicMatch is for entertainment purposes only. Astrology predictions are not professional advice. Do not make financial, relationship or medical decisions based on horoscope readings.</p>
+    </div>
+
+    <footer>
+        <p>© 2026 CosmicMatch.top | All horoscopes for entertainment only</p>
+    </footer>
+</div>
+
+<script>
+    // 生成和首页一样的随机星光
+    const starsWrap = document.querySelector('.stars');
+    for(let i=0;i<120;i++){
+        const s = document.createElement('div');
+        s.classList.add('star');
+        s.style.width = Math.random()*3 + 'px';
+        s.style.height = s.style.width;
+        s.style.left = Math.random()*100 + '%';
+        s.style.top = Math.random()*100 + '%';
+        s.style.animationDelay = Math.random()*3+'s';
+        starsWrap.appendChild(s);
+    }
+</script>
+
+<!-- ===== Analytics 追踪代码粘贴在这里 ===== -->
+<!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "你的token"}'></script> -->
+<!-- ========================================= -->
+
+<!-- ===== AdSense 广告代码粘贴在这里 ===== -->
+<!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxxxxxx" data-ad-slot="xxxxxxx" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script> -->
+<!-- ======================================= -->
+</body>
+</html>
