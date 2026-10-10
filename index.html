@@ -3,383 +3,628 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CosmicMatch · Daily Horoscope | Today's Zodiac Energy Guide</title>
-    <meta name="description" content="CosmicMatch brings you your daily horoscope for all 12 zodiac signs. Read your cosmic energy forecast for love, career, health, and money.">
+    <title>CosmicMatch | Zodiac Daily Monthly Yearly Horoscope</title>
+    <meta name="description" content="CosmicMatch crystal dream horoscopes. Read daily, monthly, 2026 and 2027 yearly predictions for all 12 zodiac signs.">
     <link rel="canonical" href="https://cosmicmatch.top/">
     <meta name="robots" content="index, follow">
-    <!-- ===== Cloudflare Web Analytics 追踪代码粘贴在这里 ===== -->
-    <!--
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "你的token"}'></script>
-    -->
-    <!-- ======================================================= -->
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            /* 水晶梦境渐变：柔粉、薰衣草紫、浅星空蓝 */
-            background: linear-gradient(170deg, #2b1b42 0%, #442b66 40%, #583e80 70%, #3c2857 100%);
-            min-height: 100vh;
-            color: #fff;
-            padding: 32px 16px 64px;
-            position: relative;
-            overflow-x: hidden;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
         }
-        /* 页面全局朦胧星光水晶光晕背景 */
-        body::before{
-            content:"";
-            position:fixed;
-            top:0;
-            left:0;
-            width:100%;
-            height:100%;
-            background-image: 
-                radial-gradient(circle at 12% 18%, rgba(255,210,240,0.12) 0%, transparent 45%),
-                radial-gradient(circle at 85% 30%, rgba(180,210,255,0.10) 0%, transparent 40%),
-                radial-gradient(circle at 45% 88%, rgba(220,190,255,0.09) 0%, transparent 50%);
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg,#0c0a20,#201848,#172b50);
+            color: #f0eaff;
+            background-attachment: fixed;
+            position: relative;
+        }
+        /* 星光背景 */
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top:0;left:0;
             pointer-events:none;
             z-index:0;
         }
+        .star {
+            position:absolute;
+            background:#fff;
+            border-radius:50%;
+            animation: twinkle 3s infinite;
+        }
+        @keyframes twinkle {
+            0%,100% {opacity:0.2;}
+            50% {opacity:1;}
+        }
         .container {
-            max-width:860px;
-            margin:0 auto;
             position:relative;
             z-index:1;
+            max-width:1200px;
+            margin:0 auto;
+            padding:30px 20px;
         }
-        /* ===== 头部品牌区 水晶梦境风格 ===== */
         header {
             text-align:center;
             margin-bottom:40px;
         }
-        .brand-mark {
-            display:inline-block;
-            font-size:0.86em;
-            letter-spacing:5px;
-            color:#e2cfff;
-            margin-bottom:14px;
-            padding:7px 18px;
-            border:1px solid rgba(226,207,255,0.35);
-            border-radius:40px;
-            background:rgba(255,255,255,0.04);
-        }
         header h1 {
-            font-size:2.2em;
-            font-weight:600;
-            background:linear-gradient(90deg, #ffd8ec, #d4b8ff, #b8d8ff);
-            -webkit-background-clip:text;
-            -webkit-text-fill-color:transparent;
-            background-clip:text;
-            margin-bottom:12px;
+            font-size:42px;
+            color:#e2cfff;
+            text-shadow:0 0 12px #9b6cf0;
+            margin-bottom:10px;
         }
         header p {
-            color:#d8cdee;
-            font-size:0.98em;
+            color:#c9b8f0;
+            font-size:18px;
         }
-        .date-pill {
-            display:inline-block;
-            margin-top:18px;
-            padding:9px 26px;
-            border-radius:32px;
-            background:rgba(255,255,255,0.07);
-            border:1px solid rgba(230,210,255,0.22);
-            font-size:0.92em;
-            color:#f0e6ff;
-            box-shadow:0 0 14px rgba(210,170,255,0.15);
-        }
-        /* ===== 星座快速跳转栏 ===== */
-        .jump-bar {
-            display:flex;
-            flex-wrap:wrap;
-            gap:9px;
-            justify-content:center;
-            margin-bottom:38px;
-        }
-        .jump-bar a {
-            text-decoration:none;
-            color:#e1d4ff;
-            background:rgba(255,255,255,0.05);
-            border:1px solid rgba(230,210,255,0.18);
-            padding:7px 14px;
-            border-radius:24px;
-            font-size:0.82em;
-            transition:0.25s ease;
-        }
-        .jump-bar a:hover {
-            background:rgba(255,255,255,0.14);
-            color:#ffffff;
-            box-shadow:0 0 12px rgba(204,165,255,0.25);
-        }
-        /* ===== 星座卡片｜水晶梦境磨砂玻璃效果 ===== */
-        .sign-card {
-            display:flex;
-            align-items:stretch;
-            background:rgba(255,255,255,0.045);
-            backdrop-filter:blur(6px);
-            border:1px solid rgba(235,215,255,0.14);
-            border-radius:20px;
-            margin-bottom:18px;
-            overflow:hidden;
-            transition:transform 0.24s ease, box-shadow 0.24s ease;
-        }
-        .sign-card:hover {
-            transform:translateY(-4px);
-            box-shadow:0 12px 36px rgba(190,140,240,0.22);
-        }
-        .sign-left {
-            flex:0 0 134px;
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            justify-content:center;
-            padding:22px 10px;
+        .nav-links {
             text-align:center;
-            background:rgba(0,0,0,0.16);
+            margin-bottom:30px;
         }
-        .sign-icon {
-            font-size:3.4em;
-            line-height:1;
-            margin-bottom:10px;
-            /* 图标柔和水晶发光 */
-            filter: drop-shadow(0 0 8px rgba(240,210,255,0.45));
+        .nav-links a {
+            color:#d4c0ff;
+            margin:0 12px;
+            text-decoration:none;
         }
-        .sign-name {
-            font-size:0.98em;
-            font-weight:700;
-            letter-spacing:0.6px;
-            color:#f3e9ff;
+        .nav-links a:hover {
+            color:#fff;
+            text-decoration:underline;
         }
-        .sign-date {
-            font-size:0.72em;
-            color:rgba(255,255,255,0.58);
-            margin-top:5px;
+        /* 运势切换标签 */
+        .tab-wrap {
+            text-align:center;
+            margin-bottom:35px;
         }
-        .sign-right {
-            flex:1;
-            padding:22px 26px;
-            display:flex;
-            align-items:center;
+        .tab-btn {
+            padding:12px 22px;
+            margin:0 6px;
+            border:none;
+            border-radius:30px;
+            background:rgba(255,255,255,0.1);
+            color:#e9e2ff;
+            font-size:16px;
+            cursor:pointer;
+            transition:all 0.3s;
+            backdrop-filter: blur(8px);
         }
-        .sign-text {
-            font-size:0.98em;
-            line-height:1.75;
-            color:rgba(255,255,255,0.87);
+        .tab-btn.active {
+            background: linear-gradient(90deg,#805ad5,#4299e1);
+            box-shadow:0 0 14px #7b58e080;
         }
-        /* 四象元素配色，适配水晶梦境低饱和 */
-        .fire .sign-left { background:rgba(255,120,90,0.12); border-right:3px solid #ff8870; }
-        .earth .sign-left { background:rgba(145,210,145,0.11); border-right:3px solid #8fcc8f; }
-        .air .sign-left { background:rgba(140,195,255,0.11); border-right:3px solid #8cc3ff; }
-        .water .sign-left { background:rgba(200,155,255,0.13); border-right:3px solid #c89bff; }
-        /* 广告预留位 */
-        .ad-space {
-            margin:30px 0;
-            min-height:12px;
+        .tab-btn:hover:not(.active) {
+            background:rgba(255,255,255,0.18);
         }
-        /* 免责声明磨砂块 */
-        .disclaimer {
-            background:rgba(255,255,255,0.05);
-            backdrop-filter:blur(4px);
-            border:1px solid rgba(230,210,255,0.16);
-            border-radius:14px;
-            padding:18px;
-            font-size:0.79em;
-            color:rgba(255,255,255,0.62);
-            margin-top:44px;
-            line-height:1.65;
+        .tab-content {
+            display:none;
+        }
+        .tab-content.active {
+            display:block;
+        }
+        /* 星座卡片网格 */
+        .zodiac-grid {
+            display:grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap:24px;
+        }
+        .zodiac-card {
+            background:rgba(255,255,255,0.07);
+            backdrop-filter: blur(12px);
+            border:1px solid rgba(210,180,255,0.2);
+            border-radius:20px;
+            overflow:hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .zodiac-card:hover {
+            transform: translateY(-6px);
+            box-shadow:0 8px 24px #8459dd44;
+        }
+        .card-img {
+            width:100%;
+            height:180px;
+            object-fit:cover;
+            background:#292056;
+        }
+        .card-body {
+            padding:20px;
+        }
+        .card-body h3 {
+            font-size:22px;
+            color:#e5d8ff;
+            margin-bottom:8px;
+        }
+        .date-range {
+            color:#b8a2e2;
+            font-size:14px;
+            margin-bottom:14px;
+        }
+        .desc {
+            line-height:1.6;
+            color:#e2ddf7;
         }
         footer {
             text-align:center;
-            margin-top:34px;
-            font-size:0.76em;
-            color:rgba(255,255,255,0.38);
-        }
-        /* ========== 移动端适配 ========== */
-        @media (max-width:520px){
-            header h1 { font-size:1.7em; }
-            .brand-mark { letter-spacing:3px; }
-            .sign-left { flex:0 0 94px; padding:16px 6px; }
-            .sign-icon { font-size:2.4em; }
-            .sign-name { font-size:0.84em; }
-            .sign-date { font-size:0.64em; }
-            .sign-right { padding:16px 16px; }
-            .sign-text { font-size:0.88em; line-height:1.7; }
+            margin-top:60px;
+            padding:20px;
+            color:#b9a8e3;
+            font-size:14px;
         }
     </style>
 </head>
 <body>
+<div class="stars"></div>
 <div class="container">
     <header>
-        <div class="brand-mark">✦ CosmicMatch ✦</div>
-        <h1>Daily Horoscope</h1>
-        <p>Your daily zodiac energy reading for love, career, health, and money.</p>
-        <div class="date-pill" id="todayDate">Today</div>
+        <h1>CosmicMatch ✧ Crystal Dream Horoscope</h1>
+        <p>Daily · Monthly · 2026 Yearly · 2027 Yearly Zodiac Predictions</p>
     </header>
-
-    <div class="jump-bar">
-        <a href="#aries">♈ Aries</a>
-        <a href="#taurus">♉ Taurus</a>
-        <a href="#gemini">♊ Gemini</a>
-        <a href="#cancer">♋ Cancer</a>
-        <a href="#leo">♌ Leo</a>
-        <a href="#virgo">♍ Virgo</a>
-        <a href="#libra">♎ Libra</a>
-        <a href="#scorpio">♏ Scorpio</a>
-        <a href="#sagittarius">♐ Sagittarius</a>
-        <a href="#capricorn">♑ Capricorn</a>
-        <a href="#aquarius">♒ Aquarius</a>
-        <a href="#pisces">♓ Pisces</a>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
     </div>
 
-    <div class="ad-space"><!-- AdSense 广告位 1 --> </div>
+    <!-- 运势标签栏 -->
+    <div class="tab-wrap">
+        <button class="tab-btn active" data-tab="daily">Daily Horoscope</button>
+        <button class="tab-btn" data-tab="monthly">Monthly Horoscope</button>
+        <button class="tab-btn" data-tab="year26">2026 Yearly</button>
+        <button class="tab-btn" data-tab="year27">2027 Yearly</button>
+    </div>
 
-    <!-- 火象 Aries -->
-    <div class="sign-card fire" id="aries">
-        <div class="sign-left">
-            <div class="sign-icon">♈</div>
-            <div class="sign-name">Aries</div>
-            <div class="sign-date">Mar 21 – Apr 19</div>
-        </div>
-        <div class="sign-right">
-            <p class="sign-text">Your energy is high today. Trust your instincts but avoid rushing into quick decisions. Good opportunities may come from old connections. In love, be direct but gentle — someone appreciates your honesty.</p>
-        </div>
-    </div>
-    <!-- 土象 Taurus -->
-    <div class="sign-card earth" id="taurus">
-        <div class="sign-left">
-            <div class="sign-icon">♉</div>
-            <div class="sign-name">Taurus</div>
-            <div class="sign-date">Apr 20 – May 20</div>
-        </div>
-        <div class="sign-right">
-            <p class="sign-text">Focus on small‑term stability. Financial matters need careful thought. Slow steady progress brings you better results. Someone close may need your calm presence more than your advice tonight.</p>
-        </div>
-    </div>
-    <!-- 风象 Gemini -->
-    <div class="sign-card air" id="gemini">
-        <div class="sign-left">
-            <div class="sign-icon">♊</div>
-            <div class="sign-name">Gemini</div>
-            <div class="sign-date">May 21 – Jun 20</div>
-        </div>
-        <div class="sign-right">
-            <p class="sign-text">Your words carry extra weight today. Choose them carefully, especially in work messages. A new opportunity may come through a casual conversation. Stay curious, not restless — and let honesty open a closed door.</p>
-        </div>
-    </div>
-    <!-- 水象 Cancer -->
-    <div class="sign-card water" id="cancer">
-        <div class="sign-left">
-            <div class="sign-icon">♋</div>
-            <div class="sign-name">Cancer</div>
-            <div class="sign-date">Jun 21 – Jul 22</div>
-        </div>
-        <div class="sign-right">
-            <p class="sign-text">Your intuition is strong today. If something feels off, it probably is — trust that feeling. A family matter may need your attention. Small gestures mean more than big promises in love right now.</p>
-        </div>
-    </div>
-    <!-- 火象 Leo -->
-    <div class="sign-card fire" id="leo">
-        <div class="sign-left">
-            <div class="sign-icon">♌</div>
-            <div class="sign-name">Leo</div>
-            <div class="sign-date">Jul 23 – Aug 22</div>
-        </div>
-        <div class="sign-right">
-            <p class="sign-text">You're in the spotlight today — use it well. Someone may ask for your help; say yes if you have the energy. A creative idea you've been sitting on deserves a second look. A small financial win is coming.</p>
-        </div>
-    </div>
-    <!-- 土象 Virgo -->
-    <div class="sign-card earth" id="virgo">
-        <div class="sign-left">
-            <div class="sign-icon">♍</div>
-            <div class="sign-name">Virgo</div>
-            <div class="sign-date">Aug 23 – Sep 22</div>
-        </div>
-        <div class="sign-right">
-            <p class="sign-text">Your attention to detail saves the day. A mistake others missed will become obvious to you — point it out kindly. Stop overanalyzing a message; it likely means what it says. A short walk will clear your mind.</p>
-        </div>
-    </div>
-    <!-- 风象 Libra -->
-    <div class="sign-card air" id="libra">
-        <div class="sign-left">
-            <div class="sign-icon">♎</div>
-            <div class="sign-name">Libra</div>
-            <div class="sign-date">Sep 23 – Oct 22</div>
-        </div>
-        <div class="sign-right">
-            <p class="sign-text">Balance is your theme today. Someone may try to pull you into a conflict that isn't yours — stay neutral. A relationship decision you've been weighing will feel clearer by tonight. Collaboration beats solo work.</p>
-        </div>
-    </div>
-    <!-- 水象 Scorpio -->
-    <div class="sign-card water" id="scorpio">
-        <div class="sign-left">
-            <div class="sign-icon">♏</div>
-            <div class="sign-name">Scorpio</div>
-            <div class="sign-date">Oct 23 – Nov 21</div>
-        </div>
-        <div class="sign-right">
-            <p class="sign-text">Your focus is sharp today. Use it on the one thing that actually matters, not on things you can't control. Vulnerability is not weakness — it's how trust is built. A secret may be ready to be shared.</p>
-        </div>
-    </div>
-    <!-- 火象 Sagittarius -->
-    <div class="sign-card fire" id="sagittarius">
-        <div class="sign-left">
-            <div class="sign-icon">♐</div>
-            <div class="sign-name">Sagittarius</div>
-            <div class="sign-date">Nov 22 – Dec 21</div>
-        </div>
-        <div class="sign-right">
-            <p class="sign-text">Adventure calls today, even if it's just a new route home. A conversation with someone from a different background will spark an idea. In love, don't promise more than you can deliver. A good day to plan, not spend.</p>
-        </div>
-    </div>
-    <!-- 土象 Capricorn -->
-    <div class="sign-card earth" id="capricorn">
-        <div class="sign-left">
-            <div class="sign-icon">♑</div>
-            <div class="sign-name">Capricorn</div>
-            <div class="sign-date">Dec 22 – Jan 19</div>
-        </div>
-        <div class="sign-right">
-            <p class="sign-text">Your hard work is being noticed, even if no one says it yet. Keep going. A career opportunity may appear through someone you already know. Let yourself relax in love — not everything needs to be a project.</p>
-        </div>
-    </div>
-    <!-- 风象 Aquarius -->
-    <div class="sign-card air" id="aquarius">
-        <div class="sign-left">
-            <div class="sign-icon">♒</div>
-            <div class="sign-name">Aquarius</div>
-            <div class="sign-date">Jan 20 – Feb 18</div>
-        </div>
-        <div class="sign-right">
-            <p class="sign-text">Your ideas are ahead of their time today. Don't be discouraged if others don't get it yet — write them down. A friendship may deepen into something more. Your unconventional approach is your advantage, not a flaw.</p>
-        </div>
-    </div>
-    <!-- 水象 Pisces -->
-    <div class="sign-card water" id="pisces">
-        <div class="sign-left">
-            <div class="sign-icon">♓</div>
-            <div class="sign-name">Pisces</div>
-            <div class="sign-date">Feb 19 – Mar 20</div>
-        </div>
-        <div class="sign-right">
-            <p class="sign-text">Your empathy is a gift today — but don't let it drain you. Someone may lean on you heavily; set a gentle boundary. A creative date idea will bring you closer. Trust your dreams tonight; they may hold an answer.</p>
+    <!-- 【1】每日运势 Daily -->
+    <div class="tab-content active" id="daily">
+        <div class="zodiac-grid">
+            <div class="zodiac-card">
+                <img class="card-img" alt="Aries" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600">
+                <div class="card-body">
+                    <h3>Aries ♈</h3>
+                    <div class="date-range">Mar 21 – Apr 19</div>
+                    <p class="desc">Today your energy is strong. Good time to start new plans. Be careful not to rush into arguments. Luck is on your side for small adventures.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Taurus" src="https://images.unsplash.com/photo-1507400492005-8cba7976f1a2?w=600">
+                <div class="card-body">
+                    <h3>Taurus ♉</h3>
+                    <div class="date-range">Apr 20 – May 20</div>
+                    <p class="desc">A calm day for you. Focus on things that bring you comfort. Financial decisions should wait until tomorrow. Enjoy peaceful moments.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Gemini" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600">
+                <div class="card-body">
+                    <h3>Gemini ♊</h3>
+                    <div class="date-range">May 21 – Jun 21</div>
+                    <p class="desc">Communication is key today. You will receive interesting messages. Keep your mind open, avoid making quick final choices.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Cancer" src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=600">
+                <div class="card-body">
+                    <h3>Cancer ♋</h3>
+                    <div class="date-range">Jun 22 – Jul 22</div>
+                    <p class="desc">Emotions may feel sensitive today. Spend time with family or at home. Trust your inner feelings, do not overreact to small things.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Leo" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600">
+                <div class="card-body">
+                    <h3>Leo ♌</h3>
+                    <div class="date-range">Jul 23 – Aug 22</div>
+                    <p class="desc">Great day for showing your talents. People notice you. Do not let pride create conflict. Romance energy is bright.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Virgo" src="https://images.unsplash.com/photo-1518156677480-8ea5513efba3?w=600">
+                <div class="card-body">
+                    <h3>Virgo ♍</h3>
+                    <div class="date-range">Aug 23 – Sep 22</div>
+                    <p class="desc">Good day for organizing tasks. Small details bring big rewards. Try not to criticize yourself too much. Relax later in the day.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Libra" src="https://images.unsplash.com/photo-1520034475321-cbe63696469a?w=600">
+                <div class="card-body">
+                    <h3>Libra ♎</h3>
+                    <div class="date-range">Sep 23 – Oct 23</div>
+                    <p class="desc">Balance is your theme today. You may need to settle a small disagreement. Beauty and art bring you good mood.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Scorpio" src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600">
+                <div class="card-body">
+                    <h3>Scorpio ♏</h3>
+                    <div class="date-range">Oct 24 – Nov 22</div>
+                    <p class="desc">Deep thoughts come to you. Good time to uncover hidden information. Keep secrets safe, avoid power struggles.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Sagittarius" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600">
+                <div class="card-body">
+                    <h3>Sagittarius ♐</h3>
+                    <div class="date-range">Nov 23 – Dec 21</div>
+                    <p class="desc">Your curiosity rises. Learning new knowledge brings luck. Travel planning is favored. Avoid careless promises.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Capricorn" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600">
+                <div class="card-body">
+                    <h3>Capricorn ♑</h3>
+                    <div class="date-range">Dec 22 – Jan 19</div>
+                    <p class="desc">Focus on long-term goals. Hard work will be seen. Take it slow, do not push your body to exhaustion.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Aquarius" src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?w=600">
+                <div class="card-body">
+                    <h3>Aquarius ♒</h3>
+                    <div class="date-range">Jan 20 – Feb 18</div>
+                    <p class="desc">New ideas pop up. Friends bring surprises. Independent thinking helps you solve problems. Stay open-minded.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Pisces" src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=600">
+                <div class="card-body">
+                    <h3>Pisces ♓</h3>
+                    <div class="date-range">Feb 19 – Mar 20</div>
+                    <p class="desc">Strong intuition today. Creative inspiration arrives. Protect your energy, stay away from draining people.</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="ad-space"><!-- AdSense 广告位 2 --></div>
+    <!-- 【2】本月运势 Monthly -->
+    <div class="tab-content" id="monthly">
+        <div class="zodiac-grid">
+            <div class="zodiac-card">
+                <img class="card-img" alt="Aries" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600">
+                <div class="card-body">
+                    <h3>Aries ♈</h3>
+                    <div class="date-range">Mar 21 – Apr 19</div>
+                    <p class="desc">This month is for bold action. The start of month: launch new plans. Middle period watch impulsiveness. End of month brings rewards for hard work. Romance may heat up.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Taurus" src="https://images.unsplash.com/photo-1507400492005-8cba7976f1a2?w=600">
+                <div class="card-body">
+                    <h3>Taurus ♉</h3>
+                    <div class="date-range">Apr 20 – May 20</div>
+                    <p class="desc">Finance and stability theme. Good to build savings. Mid-month slowdowns test patience. Relationships stay steady. Avoid risky investments this month.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Gemini" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600">
+                <div class="card-body">
+                    <h3>Gemini ♊</h3>
+                    <div class="date-range">May 21 – Jun 21</div>
+                    <p class="desc">Communication is big focus. New contacts, interviews, collaborations. Mid-month you may feel overwhelmed. Organize your schedule carefully.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Cancer" src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=600">
+                <div class="card-body">
+                    <h3>Cancer ♋</h3>
+                    <div class="date-range">Jun 22 – Jul 22</div>
+                    <p class="desc">Home and family are the main focus. You may move, redecorate or resolve old family issues. Emotional healing happens in the second half of month.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Leo" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600">
+                <div class="card-body">
+                    <h3>Leo ♌</h3>
+                    <div class="date-range">Jul 23 – Aug 22</div>
+                    <p class="desc">Recognition month. Your talents get noticed. Love life active. Mid-month avoid ego conflicts. Good time to build your personal brand.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Virgo" src="https://images.unsplash.com/photo-1518156677480-8ea5513efba3?w=600">
+                <div class="card-body">
+                    <h3>Virgo ♍</h3>
+                    <div class="date-range">Aug 23 – Sep 22</div>
+                    <p class="desc">Health & organization. Fix routines, diet and tasks. Mid-month small health alerts. Finish old unfinished projects before starting new ones.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Libra" src="https://images.unsplash.com/photo-1520034475321-cbe63696469a?w=600">
+                <div class="card-body">
+                    <h3>Libra ♎</h3>
+                    <div class="date-range">Sep 23 – Oct 23</div>
+                    <p class="desc">Relationships are central. Partnerships, love, business deals. Early month harmony. Mid-month negotiation needed. Great month for art & beauty.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Scorpio" src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600">
+                <div class="card-body">
+                    <h3>Scorpio ♏</h3>
+                    <div class="date-range">Oct 24 – Nov 22</div>
+                    <p class="desc">Transformation month. Old chapters close. Secrets revealed. Good time to cut toxic relationships. Inner strength grows strong.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Sagittarius" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600">
+                <div class="card-body">
+                    <h3>Sagittarius ♐</h3>
+                    <div class="date-range">Nov 23 – Dec 21</div>
+                    <p class="desc">Travel, study and expansion. Courses, trips, new ideas. Mid-month watch over-optimism. Good month to plan long-distance journeys.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Capricorn" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600">
+                <div class="card-body">
+                    <h3>Capricorn ♑</h3>
+                    <div class="date-range">Dec 22 – Jan 19</div>
+                    <p class="desc">Career peak month. Hard work pays off. Promotions possible. Heavy workload early month. Focus on long term security.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Aquarius" src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?w=600">
+                <div class="card-body">
+                    <h3>Aquarius ♒</h3>
+                    <div class="date-range">Jan 20 – Feb 18</div>
+                    <p class="desc">Friends, groups and innovation. New community connections. Unique opportunities come. Balance dreams with real life plans.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Pisces" src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=600">
+                <div class="card-body">
+                    <h3>Pisces ♓</h3>
+                    <div class="date-range">Feb 19 – Mar 20</div>
+                    <p class="desc">Spirit & creativity month. Inspiration flows freely. Meditation and art recommended. Protect your energy from draining people.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <div class="disclaimer">
-        <strong>Disclaimer:</strong> This website is for entertainment purposes only. Horoscope content is not a substitute for professional advice. We do not guarantee the accuracy of any reading. This site may use cookies or third‑party tools for analytics and advertising purposes.<br><br>
-        <strong>Contact:</strong> contact@cosmicmatch.top<br>
-        <strong>DMCA Notice:</strong> dmca@cosmicmatch.top
+    <!-- 【3】2026今年运势 Year 2026 -->
+    <div class="tab-content" id="year26">
+        <div class="zodiac-grid">
+            <div class="zodiac-card">
+                <img class="card-img" alt="Aries" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600">
+                <div class="card-body">
+                    <h3>Aries ♈</h3>
+                    <div class="date-range">Mar 21 – Apr 19</div>
+                    <p class="desc">2026 is your year of bold reinvention. You will get many chances to launch new projects. Career brings breakthroughs, but avoid impulsive spending. Love will be passionate, but learn to listen to your partner. Health: avoid burnout from overworking.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Taurus" src="https://images.unsplash.com/photo-1507400492005-8cba7976f1a2?w=600">
+                <div class="card-body">
+                    <h3>Taurus ♉</h3>
+                    <div class="date-range">Apr 20 – May 20</div>
+                    <p class="desc">2026 focuses on wealth and security. Your steady efforts will raise your income. Good year for savings and property planning. Relationships stay stable. Slow progress is still progress. Do not rush big risky investments this year.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Gemini" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600">
+                <div class="card-body">
+                    <h3>Gemini ♊</h3>
+                    <div class="date-range">May 21 – Jun 21</div>
+                    <p class="desc">2026 brings endless networking opportunities. Interviews, collaborations and new connections appear all year. Your communication skills become your biggest asset. Watch scattered energy; focus on one big goal instead of many small projects.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Cancer" src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=600">
+                <div class="card-body">
+                    <h3>Cancer ♋</h3>
+                    <div class="date-range">Jun 22 – Jul 22</div>
+                    <p class="desc">2026 centers around home and family. You may renovate, move or heal old family wounds. Emotional healing is your core theme. Love grows deeper. Protect your mental health; do not carry other people’s burdens all year long.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Leo" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600">
+                <div class="card-body">
+                    <h3>Leo ♌</h3>
+                    <div class="date-range">Jul 23 – Aug 22</div>
+                    <p class="desc">2026 is your shining year. Recognition, praise and new status arrive. Career promotion is possible. Romance lights up your life. Watch ego clashes with partners or coworkers. Use your influence wisely, not for vanity.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Virgo" src="https://images.unsplash.com/photo-1518156677480-8ea5513efba3?w=600">
+                <div class="card-body">
+                    <h3>Virgo ♍</h3>
+                    <div class="date-range">Aug 23 – Sep 22</div>
+                    <p class="desc">2026 is for health, routine and finishing unfinished work. You will clean up messy projects and fix daily habits. Small health improvements bring huge benefits. Stop over-criticizing yourself. Balance productivity with rest.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Libra" src="https://images.unsplash.com/photo-1520034475321-cbe63696469a?w=600">
+                <div class="card-body">
+                    <h3>Libra ♎</h3>
+                    <div class="date-range">Sep 23 – Oct 23</div>
+                    <p class="desc">2026 is all about relationships. Partnerships, love and business bonds become major themes. Old conflicts get resolved with gentle talks. Great year for art, beauty and decorating. Seek balance instead of pleasing everyone.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Scorpio" src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600">
+                <div class="card-body">
+                    <h3>Scorpio ♏</h3>
+                    <div class="date-range">Oct 24 – Nov 22</div>
+                    <p class="desc">2026 is a year of deep transformation. Old chapters close, toxic relationships fade away. You uncover hidden truths. Your inner strength grows enormously. It is a great time to rebuild your life from scratch.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Sagittarius" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600">
+                <div class="card-body">
+                    <h3>Sagittarius ♐</h3>
+                    <div class="date-range">Nov 23 – Dec 21</div>
+                    <p class="desc">2026 brings travel, study and expansion. You may take courses, explore new places or meet people from foreign backgrounds. Your optimism opens doors. Avoid blind optimism; verify facts before making big decisions.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Capricorn" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600">
+                <div class="card-body">
+                    <h3>Capricorn ♑</h3>
+                    <div class="date-range">Dec 22 – Jan 19</div>
+                    <p class="desc">2026 rewards long-term hard work. Career progress is steady. Your efforts finally get recognized. You will build long term financial security. Heavy workloads appear in early months, remember to take breaks.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Aquarius" src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?w=600">
+                <div class="card-body">
+                    <h3>Aquarius ♒</h3>
+                    <div class="date-range">Jan 20 – Feb 18</div>
+                    <p class="desc">2026 is for innovation and community. New friends and group projects arrive. Unique ideas can turn into real opportunities. Keep your creative vision, but do not ignore practical daily details.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Pisces" src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=600">
+                <div class="card-body">
+                    <h3>Pisces ♓</h3>
+                    <div class="date-range">Feb 19 – Mar 20</div>
+                    <p class="desc">2026 boosts your intuition and creativity. Art, music and meditation bring great inspiration. You are sensitive to others’ emotions. Learn to set boundaries to protect your energy from draining people.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 【4】2027明年运势 Year 2027 -->
+    <div class="tab-content" id="year27">
+        <div class="zodiac-grid">
+            <div class="zodiac-card">
+                <img class="card-img" alt="Aries" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600">
+                <div class="card-body">
+                    <h3>Aries ♈</h3>
+                    <div class="date-range">Mar 21 – Apr 19</div>
+                    <p class="desc">2027 is your year of growth and planning. After the bold changes of 2026, you will stabilize your new life. Career opportunities keep coming, but you need better long-term planning. Love becomes more mature. Watch stress levels and rest regularly.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Taurus" src="https://images.unsplash.com/photo-1507400492005-8cba7976f1a2?w=600">
+                <div class="card-body">
+                    <h3>Taurus ♉</h3>
+                    <div class="date-range">Apr 20 – May 20</div>
+                    <p class="desc">2027 brings growth in assets and family comfort. Your savings from 2026 will create bigger chances. Property and home upgrades are favored. Love remains calm and loyal. Avoid sudden big purchases without careful research.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Gemini" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600">
+                <div class="card-body">
+                    <h3>Gemini ♊</h3>
+                    <div class="date-range">May 21 – Jun 21</div>
+                    <p class="desc">2027 deepens your connections. Many short-term contacts from 2026 will turn into long-term partnerships. Great year for writing, teaching and media work. You will learn to focus deeply instead of jumping between many tasks.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Cancer" src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=600">
+                <div class="card-body">
+                    <h3>Cancer ♋</h3>
+                    <div class="date-range">Jun 22 – Jul 22</div>
+                    <p class="desc">2027 lets you build safe, lasting home foundations. Family bonds become stronger. If you healed wounds in 2026, you will enjoy peaceful home life this year. Love becomes stable and nurturing. Prioritize your emotional boundaries.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Leo" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600">
+                <div class="card-body">
+                    <h3>Leo ♌</h3>
+                    <div class="date-range">Jul 23 – Aug 22</div>
+                    <p class="desc">2027 helps you turn fame and recognition into lasting success. After your shining 2026, this year is for building sustainable income and reputation. Romance can turn into serious commitment. Remember to share credit with teammates.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Virgo" src="https://images.unsplash.com/photo-1518156677480-8ea5513efba3?w=600">
+                <div class="card-body">
+                    <h3>Virgo ♍</h3>
+                    <div class="date-range">Aug 23 – Sep 22</div>
+                    <p class="desc">2027 rewards your healthy habits. All the small improvements you built in 2026 will pay off. Work runs smoothly with good organization. This year you learn to accept imperfection. Your mental health will greatly improve.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Libra" src="https://images.unsplash.com/photo-1520034475321-cbe63696469a?w=600">
+                <div class="card-body">
+                    <h3>Libra ♎</h3>
+                    <div class="date-range">Sep 23 – Oct 23</div>
+                    <p class="desc">2027 creates stable, long-term partnerships. Relationships that started in 2026 may become lifelong bonds. Great for marriage, business co-founding. You will find inner peace, no longer forced to please everyone around you.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Scorpio" src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600">
+                <div class="card-body">
+                    <h3>Scorpio ♏</h3>
+                    <div class="date-range">Oct 24 – Nov 22</div>
+                    <p class="desc">2027 is your rebuilding year. After transformation in 2026, you build new life structures. You gain deeper wisdom from past endings. Good for research, investment and deep love. Trust your intuition fully.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Sagittarius" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600">
+                <div class="card-body">
+                    <h3>Sagittarius ♐</h3>
+                    <div class="date-range">Nov 23 – Dec 21</div>
+                    <p class="desc">2027 brings long journeys and deep learning. Trips and education started in 2026 continue. Your world view expands. New wisdom changes your goals. This year is perfect for studying advanced topics and overseas exploration.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Capricorn" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600">
+                <div class="card-body">
+                    <h3>Capricorn ♑</h3>
+                    <div class="date-range">Dec 22 – Jan 19</div>
+                    <p class="desc">2027 brings stable career gains. Your hard work from previous years reaches a milestone. You may reach a long awaited career goal. Financial security increases. Do not sacrifice your rest for endless work.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Aquarius" src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?w=600">
+                <div class="card-body">
+                    <h3>Aquarius ♒</h3>
+                    <div class="date-range">Jan 20 – Feb 18</div>
+                    <p class="desc">2027 turns your creative ideas into real results. Ideas you dreamed up in 2026 can launch this year. Community and group projects grow. Keep your unique vision, but learn practical planning to turn dreams real.</p>
+                </div>
+            </div>
+            <div class="zodiac-card">
+                <img class="card-img" alt="Pisces" src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=600">
+                <div class="card-body">
+                    <h3>Pisces ♓</h3>
+                    <div class="date-range">Feb 19 – Mar 20</div>
+                    <p class="desc">2027 deepens your spiritual and creative gifts. Your intuition becomes even stronger. Art and creative projects bring recognition. Boundary skills you learned in 2026 will protect you, letting you enjoy your gifts without burnout.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer>
-        <p>© 2026 CosmicMatch. All rights reserved.</p>
+        <p>© 2026 CosmicMatch.top | All horoscopes for entertainment only</p>
     </footer>
 </div>
 
 <script>
-    const d = new Date();
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    document.getElementById('todayDate').textContent = d.toLocaleDateString('en‑US', options);
+    // 生成随机星光
+    const starsWrap = document.querySelector('.stars');
+    for(let i=0;i<120;i++){
+        const s = document.createElement('div');
+        s.classList.add('star');
+        s.style.width = Math.random()*3 + 'px';
+        s.style.height = s.style.width;
+        s.style.left = Math.random()*100 + '%';
+        s.style.top = Math.random()*100 + '%';
+        s.style.animationDelay = Math.random()*3+'s';
+        starsWrap.appendChild(s);
+    }
+
+    // 标签切换JS
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    tabBtns.forEach(btn=>{
+        btn.onclick = function(){
+            const targetTab = this.dataset.tab;
+            // 清除激活
+            document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+            // 激活选中
+            this.classList.add('active');
+            document.getElementById(targetTab).classList.add('active');
+        }
+    })
 </script>
+
+<!-- ===== Analytics 追踪代码粘贴在这里 ===== -->
+<!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "你的token"}'></script> -->
+<!-- ========================================= -->
+
+<!-- ===== AdSense 广告代码粘贴在这里 ===== -->
+<!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxxxxxx" data-ad-slot="xxxxxxx" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script> -->
+<!-- ======================================= -->
 </body>
 </html>
