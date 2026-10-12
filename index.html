@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CosmicMatch ✧ Crystal Dream Zodiac Horoscope</title>
-    <meta name="description" content="CosmicMatch crystal dream horoscopes. Read unique daily, monthly, 2026 and 2027 yearly predictions for all 12 zodiac signs. Love, Career & Health forecasts for every sign.">
+    <title>CosmicMatch ✧ Crystal Dream Horoscope</title>
+    <meta name="description" content="CosmicMatch crystal dream horoscopes. Read daily, monthly, 2026 and 2027 yearly predictions for all 12 zodiac signs. Love, Career & Health forecasts.">
     <link rel="canonical" href="https://cosmicmatch.top/">
     <meta name="robots" content="index, follow">
     <style>
@@ -14,167 +14,232 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', sans-serif;
         }
+
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg,#0c0a20,#201848,#172b50);
+            background: linear-gradient(135deg, #0c0a20, #1a1442, #2a1f5c, #15274f);
             color: #f0eaff;
             background-attachment: fixed;
             position: relative;
         }
-        /* 星光背景 */
+
+        /* 全局星空层 */
         .stars {
             position: fixed;
             width: 100%;
             height: 100%;
-            top:0;left:0;
-            pointer-events:none;
-            z-index:0;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
         }
+
         .star {
-            position:absolute;
-            background:#fff;
-            border-radius:50%;
-            animation: twinkle 3s infinite;
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
         }
+
         @keyframes twinkle {
-            0%,100% {opacity:0.2;}
-            50% {opacity:1;}
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
         }
+
         .container {
-            position:relative;
-            z-index:1;
-            max-width:1200px;
-            margin:0 auto;
-            padding:30px 20px;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
         }
+
         header {
-            text-align:center;
-            margin-bottom:40px;
+            text-align: center;
+            margin-bottom: 40px;
         }
+
         header h1 {
-            font-size:42px;
-            color:#e2cfff;
-            text-shadow:0 0 12px #9b6cf0;
-            margin-bottom:10px;
+            font-size: 42px;
+            color: #e2cfff;
+            text-shadow: 0 0 12px #9b6cf0;
+            margin-bottom: 10px;
         }
+
         header p {
-            color:#c9b8f0;
-            font-size:18px;
+            color: #c9b8f0;
+            font-size: 18px;
         }
+
         .nav-links {
-            text-align:center;
-            margin-bottom:30px;
+            text-align: center;
+            margin-bottom: 30px;
         }
+
         .nav-links a {
-            color:#d4c0ff;
-            margin:0 12px;
-            text-decoration:none;
+            color: #d4c0ff;
+            margin: 0 12px;
+            text-decoration: none;
         }
+
         .nav-links a:hover {
-            color:#fff;
-            text-decoration:underline;
+            color: #fff;
+            text-decoration: underline;
         }
-        /* 运势切换标签 */
+
+        /* 标签栏 */
         .tab-wrap {
-            text-align:center;
-            margin-bottom:35px;
+            text-align: center;
+            margin-bottom: 35px;
         }
+
         .tab-btn {
-            padding:12px 22px;
-            margin:0 6px;
-            border:none;
-            border-radius:30px;
-            background:rgba(255,255,255,0.1);
-            color:#e9e2ff;
-            font-size:16px;
-            cursor:pointer;
-            transition:all 0.3s;
+            padding: 12px 22px;
+            margin: 0 6px;
+            border: none;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #e9e2ff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
             backdrop-filter: blur(8px);
         }
+
         .tab-btn.active {
-            background: linear-gradient(90deg,#805ad5,#4299e1);
-            box-shadow:0 0 14px #7b58e080;
+            background: linear-gradient(90deg, #805ad5, #4299e1);
+            box-shadow: 0 0 14px #7b58e080;
         }
+
         .tab-btn:hover:not(.active) {
-            background:rgba(255,255,255,0.18);
+            background: rgba(255, 255, 255, 0.18);
         }
+
         .tab-content {
-            display:none;
+            display: none;
         }
+
         .tab-content.active {
-            display:block;
+            display: block;
         }
-        /* 星座卡片网格 */
+
+        /* 星座网格 */
         .zodiac-grid {
-            display:grid;
+            display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap:24px;
+            gap: 24px;
         }
+
         .zodiac-card {
-            background:rgba(255,255,255,0.07);
+            background: rgba(255, 255, 255, 0.07);
             backdrop-filter: blur(12px);
-            border:1px solid rgba(210,180,255,0.2);
-            border-radius:20px;
-            overflow:hidden;
+            border: 1px solid rgba(210, 180, 255, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
         }
+
         .zodiac-card:hover {
             transform: translateY(-6px);
-            box-shadow:0 8px 24px #8459dd44;
+            box-shadow: 0 8px 24px #8459dd44;
         }
+
+        /* 卡片顶部：纯CSS星空渐变图区 */
         .card-img {
-            width:100%;
-            height:180px;
-            object-fit:cover;
-            background:#292056;
+            width: 100%;
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.9) 1px, transparent 2px),
+                radial-gradient(circle at 70% 60%, rgba(255,255,255,0.8) 1px, transparent 2px),
+                radial-gradient(circle at 40% 80%, rgba(255,255,255,0.7) 1px, transparent 2px),
+                radial-gradient(circle at 85% 25%, rgba(255,255,255,0.6) 1px, transparent 2px),
+                linear-gradient(135deg, #0b1a44 0%, #172264 25%, #243070 50%, #3a2f7a 75%, #553d8c 100%);
         }
+
+        .card-img::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(1200px 600px at 20% 10%, rgba(120, 90, 255, 0.35), transparent 60%),
+                radial-gradient(900px 500px at 80% 90%, rgba(70, 130, 255, 0.35), transparent 55%),
+                radial-gradient(700px 400px at 50% 50%, rgba(180, 110, 255, 0.25), transparent 60%);
+            pointer-events: none;
+        }
+
+        .card-img::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(2px 2px at 15% 25%, #fff, transparent),
+                radial-gradient(1px 1px at 35% 70%, #fff, transparent),
+                radial-gradient(1px 1px at 55% 35%, #d9e8ff, transparent),
+                radial-gradient(2px 2px at 75% 80%, #fff, transparent),
+                radial-gradient(1px 1px at 25% 55%, #b6c8ff, transparent),
+                radial-gradient(1px 1px at 65% 15%, #fff, transparent),
+                radial-gradient(1px 1px at 85% 45%, #c7dcff, transparent),
+                radial-gradient(1px 1px at 45% 90%, #fff, transparent);
+            opacity: 0.9;
+            animation: twinkle 4s infinite ease-in-out;
+        }
+
         .card-body {
-            padding:20px;
+            padding: 20px;
         }
+
         .card-body h3 {
-            font-size:22px;
-            color:#e5d8ff;
-            margin-bottom:8px;
+            font-size: 22px;
+            color: #e5d8ff;
+            margin-bottom: 8px;
         }
+
         .date-range {
-            color:#b8a2e2;
-            font-size:14px;
-            margin-bottom:14px;
+            color: #b8a2e2;
+            font-size: 14px;
+            margin-bottom: 14px;
         }
+
         .section-title {
-            color:#d4bfff;
-            font-weight:bold;
-            margin-top:12px;
-            margin-bottom:4px;
-            font-size:15px;
+            color: #d4bfff;
+            font-weight: bold;
+            margin-top: 12px;
+            margin-bottom: 4px;
+            font-size: 15px;
         }
+
         .desc {
-            line-height:1.6;
-            color:#e2ddf7;
-            font-size:14px;
+            line-height: 1.6;
+            color: #e2ddf7;
+            font-size: 14px;
         }
+
         footer {
-            text-align:center;
-            margin-top:60px;
-            padding:20px;
-            color:#b9a8e3;
-            font-size:14px;
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: #b9a8e3;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
+
 <div class="stars"></div>
+
 <div class="container">
     <header>
         <h1>CosmicMatch ✧ Crystal Dream Horoscope</h1>
         <p>Daily · Monthly · 2026 Yearly · 2027 Yearly Zodiac Predictions | Love · Career · Health</p>
     </header>
+
     <div class="nav-links">
         <a href="/">Home</a>
         <a href="/privacy-policy.html">Privacy Policy</a>
     </div>
 
-    <!-- 运势标签栏 -->
     <div class="tab-wrap">
         <button class="tab-btn active" data-tab="daily">Daily Horoscope</button>
         <button class="tab-btn" data-tab="monthly">Monthly Horoscope</button>
@@ -182,11 +247,11 @@
         <button class="tab-btn" data-tab="year27">2027 Yearly</button>
     </div>
 
-    <!-- 【1】每日运势 Daily -->
+    <!-- Daily -->
     <div class="tab-content active" id="daily">
         <div class="zodiac-grid">
             <div class="zodiac-card">
-                <img class="card-img" alt="Aries" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600">
+                <div class="card-img" aria-label="Aries cosmic background"></div>
                 <div class="card-body">
                     <h3>Aries ♈</h3>
                     <div class="date-range">Mar 21 – Apr 19</div>
@@ -198,8 +263,9 @@
                     <p class="desc">Adrenaline may drain you fast. Sip water regularly and step outside for short air breaks. A brisk walk will release built-up tension.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Taurus" src="https://images.unsplash.com/photo-1507400492005-8cba7976f1a2?w=600">
+                <div class="card-img" aria-label="Taurus cosmic background"></div>
                 <div class="card-body">
                     <h3>Taurus ♉</h3>
                     <div class="date-range">Apr 20 – May 20</div>
@@ -211,8 +277,9 @@
                     <p class="desc">Your body craves comfort. Stick to warm, nourishing meals and skip heavy greasy foods that weigh down your digestion.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Gemini" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600">
+                <div class="card-img" aria-label="Gemini cosmic background"></div>
                 <div class="card-body">
                     <h3>Gemini ♊</h3>
                     <div class="date-range">May 21 – Jun 21</div>
@@ -224,8 +291,9 @@
                     <p class="desc">Mental fatigue creeps in easily. Step away from screens and breathe fresh air to calm racing thoughts.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Cancer" src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=600">
+                <div class="card-img" aria-label="Cancer cosmic background"></div>
                 <div class="card-body">
                     <h3>Cancer ♋</h3>
                     <div class="date-range">Jun 22 – Jul 22</div>
@@ -237,8 +305,9 @@
                     <p class="desc">Protect your emotional state. Steer clear of draining people and carve out peaceful downtime to recharge your spirit.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Leo" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600">
+                <div class="card-img" aria-label="Leo cosmic background"></div>
                 <div class="card-body">
                     <h3>Leo ♌</h3>
                     <div class="date-range">Jul 23 – Aug 22</div>
@@ -250,8 +319,9 @@
                     <p class="desc">Excitement can overtax your nervous system. Guard your sleep schedule and avoid overcommitting to social plans.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Virgo" src="https://images.unsplash.com/photo-1518156677480-8ea5513efba3?w=600">
+                <div class="card-img" aria-label="Virgo cosmic background"></div>
                 <div class="card-body">
                     <h3>Virgo ♍</h3>
                     <div class="date-range">Aug 23 – Sep 22</div>
@@ -263,8 +333,9 @@
                     <p class="desc">Use today to tweak daily routines. Gentle stretching eases muscle tension and grounds your busy mind.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Libra" src="https://images.unsplash.com/photo-1520034475321-cbe63696469a?w=600">
+                <div class="card-img" aria-label="Libra cosmic background"></div>
                 <div class="card-body">
                     <h3>Libra ♎</h3>
                     <div class="date-range">Sep 23 – Oct 23</div>
@@ -276,8 +347,9 @@
                     <p class="desc">Overthinking can drain your energy. Soft music or quiet meditation helps quiet swirling thoughts.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Scorpio" src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600">
+                <div class="card-img" aria-label="Scorpio cosmic background"></div>
                 <div class="card-body">
                     <h3>Scorpio ♏</h3>
                     <div class="date-range">Oct 24 – Nov 22</div>
@@ -289,8 +361,9 @@
                     <p class="desc">Hidden stress builds silently. Slow breathing exercises help release tension stored deep inside your body.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Sagittarius" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600">
+                <div class="card-img" aria-label="Sagittarius cosmic background"></div>
                 <div class="card-body">
                     <h3>Sagittarius ♐</h3>
                     <div class="date-range">Nov 23 – Dec 21</div>
@@ -302,8 +375,9 @@
                     <p class="desc">Outdoor movement lifts your mood. Watch for minor strains and do not overexert yourself during fun activities.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Capricorn" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600">
+                <div class="card-img" aria-label="Capricorn cosmic background"></div>
                 <div class="card-body">
                     <h3>Capricorn ♑</h3>
                     <div class="date-range">Dec 22 – Jan 19</div>
@@ -315,8 +389,9 @@
                     <p class="desc">Do not push your body beyond safe limits. Schedule intentional breaks to prevent physical burnout.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Aquarius" src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?w=600">
+                <div class="card-img" aria-label="Aquarius cosmic background"></div>
                 <div class="card-body">
                     <h3>Aquarius ♒</h3>
                     <div class="date-range">Jan 20 – Feb 18</div>
@@ -328,8 +403,9 @@
                     <p class="desc">Irregular sleep weakens your energy. Stick to a consistent bedtime even when brainstorming exciting new concepts.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Pisces" src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=600">
+                <div class="card-img" aria-label="Pisces cosmic background"></div>
                 <div class="card-body">
                     <h3>Pisces ♓</h3>
                     <div class="date-range">Feb 19 – Mar 20</div>
@@ -344,11 +420,11 @@
         </div>
     </div>
 
-    <!-- 【2】本月运势 Monthly -->
+    <!-- Monthly -->
     <div class="tab-content" id="monthly">
         <div class="zodiac-grid">
             <div class="zodiac-card">
-                <img class="card-img" alt="Aries" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600">
+                <div class="card-img" aria-label="Aries monthly cosmic background"></div>
                 <div class="card-body">
                     <h3>Aries ♈</h3>
                     <div class="date-range">Mar 21 – Apr 19</div>
@@ -360,8 +436,9 @@
                     <p class="desc">Your vitality runs high, yet burnout lurks. Build regular rest intervals and avoid high-risk physical activities without proper preparation.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Taurus" src="https://images.unsplash.com/photo-1507400492005-8cba7976f1a2?w=600">
+                <div class="card-img" aria-label="Taurus monthly cosmic background"></div>
                 <div class="card-body">
                     <h3>Taurus ♉</h3>
                     <div class="date-range">Apr 20 – May 20</div>
@@ -373,8 +450,9 @@
                     <p class="desc">Digestive sensitivity rises this month. Choose mild, whole foods and stick to consistent meal schedules to avoid discomfort.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Gemini" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600">
+                <div class="card-img" aria-label="Gemini monthly cosmic background"></div>
                 <div class="card-body">
                     <h3>Gemini ♊</h3>
                     <div class="date-range">May 21 – Jun 21</div>
@@ -386,8 +464,9 @@
                     <p class="desc">Mental tension accumulates steadily. Reduce screen time and practice light meditation to quiet constant mental chatter.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Cancer" src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=600">
+                <div class="card-img" aria-label="Cancer monthly cosmic background"></div>
                 <div class="card-body">
                     <h3>Cancer ♋</h3>
                     <div class="date-range">Jun 22 – Jul 22</div>
@@ -399,8 +478,9 @@
                     <p class="desc">Emotional healing is your biggest health task. Stop absorbing other people’s stress as if it belongs to you.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Leo" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600">
+                <div class="card-img" aria-label="Leo monthly cosmic background"></div>
                 <div class="card-body">
                     <h3>Leo ♌</h3>
                     <div class="date-range">Jul 23 – Aug 22</div>
@@ -412,8 +492,9 @@
                     <p class="desc">Excitement can raise your heart rate and stress levels. Balance busy social plans with quiet nights to recharge your spirit.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Virgo" src="https://images.unsplash.com/photo-1518156677480-8ea5513efba3?w=600">
+                <div class="card-img" aria-label="Virgo monthly cosmic background"></div>
                 <div class="card-body">
                     <h3>Virgo ♍</h3>
                     <div class="date-range">Aug 23 – Sep 22</div>
@@ -425,8 +506,9 @@
                     <p class="desc">Minor health alerts may surface. Rebuild consistent sleep and daily habits to prevent small issues from growing larger.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Libra" src="https://images.unsplash.com/photo-1520034475321-cbe63696469a?w=600">
+                <div class="card-img" aria-label="Libra monthly cosmic background"></div>
                 <div class="card-body">
                     <h3>Libra ♎</h3>
                     <div class="date-range">Sep 23 – Oct 23</div>
@@ -438,8 +520,9 @@
                     <p class="desc">Stress comes from trying to satisfy everyone around you. Art and music create peaceful escape from endless mental weighing.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Scorpio" src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600">
+                <div class="card-img" aria-label="Scorpio monthly cosmic background"></div>
                 <div class="card-body">
                     <h3>Scorpio ♏</h3>
                     <div class="date-range">Oct 24 – Nov 22</div>
@@ -451,8 +534,9 @@
                     <p class="desc">Deep emotional burdens need release. Gentle detox practices and quiet rest help heal old wounds stored in your body.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Sagittarius" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600">
+                <div class="card-img" aria-label="Sagittarius monthly cosmic background"></div>
                 <div class="card-body">
                     <h3>Sagittarius ♐</h3>
                     <div class="date-range">Nov 23 – Dec 21</div>
@@ -464,8 +548,9 @@
                     <p class="desc">Outdoor adventures energize you. Stay alert for minor injuries and avoid reckless physical risks during excursions.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Capricorn" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600">
+                <div class="card-img" aria-label="Capricorn monthly cosmic background"></div>
                 <div class="card-body">
                     <h3>Capricorn ♑</h3>
                     <div class="date-range">Dec 22 – Jan 19</div>
@@ -477,8 +562,9 @@
                     <p class="desc">Work pressure drains your stamina. Schedule regular breaks and avoid pulling late nights to preserve long-term health.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Aquarius" src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?w=600">
+                <div class="card-img" aria-label="Aquarius monthly cosmic background"></div>
                 <div class="card-body">
                     <h3>Aquarius ♒</h3>
                     <div class="date-range">Jan 20 – Feb 18</div>
@@ -490,8 +576,9 @@
                     <p class="desc">Social gatherings deplete your mental energy. Protect yourself by reserving quiet alone time to reset your mind.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Pisces" src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=600">
+                <div class="card-img" aria-label="Pisces monthly cosmic background"></div>
                 <div class="card-body">
                     <h3>Pisces ♓</h3>
                     <div class="date-range">Feb 19 – Mar 20</div>
@@ -506,11 +593,11 @@
         </div>
     </div>
 
-    <!-- 【3】2026今年运势 Year 2026 -->
+    <!-- 2026 Yearly -->
     <div class="tab-content" id="year26">
         <div class="zodiac-grid">
             <div class="zodiac-card">
-                <img class="card-img" alt="Aries" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600">
+                <div class="card-img" aria-label="Aries 2026 cosmic background"></div>
                 <div class="card-body">
                     <h3>Aries ♈</h3>
                     <div class="date-range">Mar 21 – Apr 19</div>
@@ -522,8 +609,9 @@
                     <p class="desc">Your energy remains high, yet burnout is a real risk. Stick to regular exercise and avoid overworking yourself for long stretches.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Taurus" src="https://images.unsplash.com/photo-1507400492005-8cba7976f1a2?w=600">
+                <div class="card-img" aria-label="Taurus 2026 cosmic background"></div>
                 <div class="card-body">
                     <h3>Taurus ♉</h3>
                     <div class="date-range">Apr 20 – May 20</div>
@@ -535,8 +623,9 @@
                     <p class="desc">Watch weight shifts and digestive comfort. Gentle daily movement and balanced meals help you maintain physical equilibrium.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Gemini" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600">
+                <div class="card-img" aria-label="Gemini 2026 cosmic background"></div>
                 <div class="card-body">
                     <h3>Gemini ♊</h3>
                     <div class="date-range">May 21 – Jun 21</div>
@@ -548,8 +637,9 @@
                     <p class="desc">Mental tiredness will surface repeatedly. Reduce overthinking and protect sleep quality to preserve your cognitive energy.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Cancer" src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=600">
+                <div class="card-img" aria-label="Cancer 2026 cosmic background"></div>
                 <div class="card-body">
                     <h3>Cancer ♋</h3>
                     <div class="date-range">Jun 22 – Jul 22</div>
@@ -561,8 +651,9 @@
                     <p class="desc">Emotional wellbeing tops your health priority list. Do not carry other people’s burdens throughout the whole year.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Leo" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600">
+                <div class="card-img" aria-label="Leo 2026 cosmic background"></div>
                 <div class="card-body">
                     <h3>Leo ♌</h3>
                     <div class="date-range">Jul 23 – Aug 22</div>
@@ -574,8 +665,9 @@
                     <p class="desc">Stress may affect your heart and circulation. Maintain a balanced lifestyle and carve out enough rest between busy events.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Virgo" src="https://images.unsplash.com/photo-1518156677480-8ea5513efba3?w=600">
+                <div class="card-img" aria-label="Virgo 2026 cosmic background"></div>
                 <div class="card-body">
                     <h3>Virgo ♍</h3>
                     <div class="date-range">Aug 23 – Sep 22</div>
@@ -587,8 +679,9 @@
                     <p class="desc">Small daily health tweaks create big rewards. Balance productivity with rest so you do not deplete your reserves.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Libra" src="https://images.unsplash.com/photo-1520034475321-cbe63696469a?w=600">
+                <div class="card-img" aria-label="Libra 2026 cosmic background"></div>
                 <div class="card-body">
                     <h3>Libra ♎</h3>
                     <div class="date-range">Sep 23 – Oct 23</div>
@@ -600,8 +693,9 @@
                     <p class="desc">Stress builds from endless compromise. Learn to set firm boundaries to protect your mental peace.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Scorpio" src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600">
+                <div class="card-img" aria-label="Scorpio 2026 cosmic background"></div>
                 <div class="card-body">
                     <h3>Scorpio ♏</h3>
                     <div class="date-range">Oct 24 – Nov 22</div>
@@ -613,8 +707,9 @@
                     <p class="desc">Release past trauma stored in your body. Deep rest and healing practices help you move forward with lighter energy.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Sagittarius" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600">
+                <div class="card-img" aria-label="Sagittarius 2026 cosmic background"></div>
                 <div class="card-body">
                     <h3>Sagittarius ♐</h3>
                     <div class="date-range">Nov 23 – Dec 21</div>
@@ -626,8 +721,9 @@
                     <p class="desc">You stay active all year, but watch for accidents during trips. Keep hydrated and avoid reckless physical risks.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Capricorn" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600">
+                <div class="card-img" aria-label="Capricorn 2026 cosmic background"></div>
                 <div class="card-body">
                     <h3>Capricorn ♑</h3>
                     <div class="date-range">Dec 22 – Jan 19</div>
@@ -639,8 +735,9 @@
                     <p class="desc">Heavy workloads hit hardest in early months. Take consistent breaks and protect your joints from strain.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Aquarius" src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?w=600">
+                <div class="card-img" aria-label="Aquarius 2026 cosmic background"></div>
                 <div class="card-body">
                     <h3>Aquarius ♒</h3>
                     <div class="date-range">Jan 20 – Feb 18</div>
@@ -652,8 +749,9 @@
                     <p class="desc">Erratic sleep patterns drain your vitality. Fix your bedtime routine to keep your energy steady through the year.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Pisces" src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=600">
+                <div class="card-img" aria-label="Pisces 2026 cosmic background"></div>
                 <div class="card-body">
                     <h3>Pisces ♓</h3>
                     <div class="date-range">Feb 19 – Mar 20</div>
@@ -668,11 +766,11 @@
         </div>
     </div>
 
-    <!-- 【4】2027明年运势 Year 2027 -->
+    <!-- 2027 Yearly -->
     <div class="tab-content" id="year27">
         <div class="zodiac-grid">
             <div class="zodiac-card">
-                <img class="card-img" alt="Aries" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600">
+                <div class="card-img" aria-label="Aries 2027 cosmic background"></div>
                 <div class="card-body">
                     <h3>Aries ♈</h3>
                     <div class="date-range">Mar 21 – Apr 19</div>
@@ -684,8 +782,9 @@
                     <p class="desc">Stress management becomes your top priority. Build consistent workout habits to release pressure before it builds up.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Taurus" src="https://images.unsplash.com/photo-1507400492005-8cba7976f1a2?w=600">
+                <div class="card-img" aria-label="Taurus 2027 cosmic background"></div>
                 <div class="card-body">
                     <h3>Taurus ♉</h3>
                     <div class="date-range">Apr 20 – May 20</div>
@@ -697,8 +796,9 @@
                     <p class="desc">Maintain steady diet and light movement. Avoid sudden indulgence that disrupts your stable physical balance.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Gemini" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600">
+                <div class="card-img" aria-label="Gemini 2027 cosmic background"></div>
                 <div class="card-body">
                     <h3>Gemini ♊</h3>
                     <div class="date-range">May 21 – Jun 21</div>
@@ -710,8 +810,9 @@
                     <p class="desc">Your mental stability improves greatly. Train your focus and reduce scattered thinking to preserve your mental clarity.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Cancer" src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=600">
+                <div class="card-img" aria-label="Cancer 2027 cosmic background"></div>
                 <div class="card-body">
                     <h3>Cancer ♋</h3>
                     <div class="date-range">Jun 22 – Jul 22</div>
@@ -723,8 +824,9 @@
                     <p class="desc">Emotional recovery continues. Hold firm boundaries to guard your inner peace and prevent emotional overload.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Leo" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600">
+                <div class="card-img" aria-label="Leo 2027 cosmic background"></div>
                 <div class="card-body">
                     <h3>Leo ♌</h3>
                     <div class="date-range">Jul 23 – Aug 22</div>
@@ -736,8 +838,9 @@
                     <p class="desc">Avoid overcommitting to social obligations. Balance busy events with quiet downtime to recharge your spirit.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Virgo" src="https://images.unsplash.com/photo-1518156677480-8ea5513efba3?w=600">
+                <div class="card-img" aria-label="Virgo 2027 cosmic background"></div>
                 <div class="card-body">
                     <h3>Virgo ♍</h3>
                     <div class="date-range">Aug 23 – Sep 22</div>
@@ -749,8 +852,9 @@
                     <p class="desc">All small improvements you started in 2026 bear fruit. Your mental wellbeing makes huge strides in 2027.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Libra" src="https://images.unsplash.com/photo-1520034475321-cbe63696469a?w=600">
+                <div class="card-img" aria-label="Libra 2027 cosmic background"></div>
                 <div class="card-body">
                     <h3>Libra ♎</h3>
                     <div class="date-range">Sep 23 – Oct 23</div>
@@ -762,8 +866,9 @@
                     <p class="desc">Inner calm arrives naturally. Anxiety fades, and you find better daily balance between responsibilities and rest.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Scorpio" src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600">
+                <div class="card-img" aria-label="Scorpio 2027 cosmic background"></div>
                 <div class="card-body">
                     <h3>Scorpio ♏</h3>
                     <div class="date-range">Oct 24 – Nov 22</div>
@@ -775,8 +880,9 @@
                     <p class="desc">Old emotional wounds continue healing. Trust bodily intuition and respond promptly to physical warning signs.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Sagittarius" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600">
+                <div class="card-img" aria-label="Sagittarius 2027 cosmic background"></div>
                 <div class="card-body">
                     <h3>Sagittarius ♐</h3>
                     <div class="date-range">Nov 23 – Dec 21</div>
@@ -788,8 +894,9 @@
                     <p class="desc">Keep your body active. Take precautions and protect yourself during long-distance trips and outdoor adventures.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Capricorn" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600">
+                <div class="card-img" aria-label="Capricorn 2027 cosmic background"></div>
                 <div class="card-body">
                     <h3>Capricorn ♑</h3>
                     <div class="date-range">Dec 22 – Jan 19</div>
@@ -801,8 +908,9 @@
                     <p class="desc">Do not sacrifice rest for endless work tasks. Schedule regular relaxation to avoid chronic fatigue.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Aquarius" src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?w=600">
+                <div class="card-img" aria-label="Aquarius 2027 cosmic background"></div>
                 <div class="card-body">
                     <h3>Aquarius ♒</h3>
                     <div class="date-range">Jan 20 – Feb 18</div>
@@ -814,8 +922,9 @@
                     <p class="desc">Group activities can drain your energy. Keep reserved alone time to recharge and avoid burnout from social overload.</p>
                 </div>
             </div>
+
             <div class="zodiac-card">
-                <img class="card-img" alt="Pisces" src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=600">
+                <div class="card-img" aria-label="Pisces 2027 cosmic background"></div>
                 <div class="card-body">
                     <h3>Pisces ♓</h3>
                     <div class="date-range">Feb 19 – Mar 20</div>
@@ -836,43 +945,42 @@
 </div>
 
 <script>
-    // 生成随机星光
+    // 全局星空
     const starsWrap = document.querySelector('.stars');
-    for(let i=0;i<120;i++){
+    for (let i = 0; i < 120; i++) {
         const s = document.createElement('div');
         s.classList.add('star');
-        s.style.width = Math.random()*3 + 'px';
-        s.style.height = s.style.width;
-        s.style.left = Math.random()*100 + '%';
-        s.style.top = Math.random()*100 + '%';
-        s.style.animationDelay = Math.random()*3+'s';
+        const size = Math.random() * 2.4 + 0.4;
+        s.style.width = size + 'px';
+        s.style.height = size + 'px';
+        s.style.left = Math.random() * 100 + '%';
+        s.style.top = Math.random() * 100 + '%';
+        s.style.animationDelay = Math.random() * 3 + 's';
+        s.style.animationDuration = (Math.random() * 2 + 2) + 's';
         starsWrap.appendChild(s);
     }
 
-    // 标签切换JS
+    // 标签切换
     const tabBtns = document.querySelectorAll('.tab-btn');
-    tabBtns.forEach(btn=>{
-        btn.onclick = function(){
+    tabBtns.forEach(btn => {
+        btn.onclick = function () {
             const targetTab = this.dataset.tab;
-            // 清除激活
-            document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
-            // 激活选中
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             this.classList.add('active');
             document.getElementById(targetTab).classList.add('active');
-        }
-    })
+        };
+    });
 </script>
 
-<!-- ===== Analytics 追踪代码粘贴在这里 ===== -->
+<!-- Analytics 预留位置 -->
 <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "你的token"}'></script> -->
-<!-- ========================================= -->
 
-<!-- ===== AdSense 广告代码粘贴在这里 ===== -->
+<!-- AdSense 预留位置 -->
 <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxxxxxx" data-ad-slot="xxxxxxx" data-ad-format="auto" data-full-width-responsive="true"></ins>
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script> -->
-<!-- ======================================= -->
+
 </body>
 </html>
