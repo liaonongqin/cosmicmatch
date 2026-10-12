@@ -1,986 +1,1857 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CosmicMatch ✧ Crystal Dream Horoscope</title>
-    <meta name="description" content="CosmicMatch crystal dream horoscopes. Read daily, monthly, 2026 and 2027 yearly predictions for all 12 zodiac signs. Love, Career & Health forecasts.">
-    <link rel="canonical" href="https://cosmicmatch.top/">
-    <meta name="robots" content="index, follow">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CosmicMatch ✦ Crystal Dream Horoscope</title>
+<meta name="description" content="Daily, Monthly, 2026 & 2027 yearly zodiac horoscopes. Love, Career and Health predictions for all 12 star signs." />
+<link rel="canonical" href="https://cosmicmatch.top/" />
+<meta name="robots" content="index, follow" />
 
-        body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0c0a20, #1a1442, #2a1f5c, #15274f);
-            color: #f0eaff;
-            background-attachment: fixed;
-            position: relative;
-        }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
 
-        /* 全局星空层 */
-        .stars {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 0;
-        }
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(120, 90, 255, 0.25), transparent 26%),
+    radial-gradient(circle at 80% 20%, rgba(80, 140, 255, 0.18), transparent 28%),
+    radial-gradient(circle at 50% 90%, rgba(180, 110, 255, 0.22), transparent 32%),
+    linear-gradient(180deg, #0c0a24 0%, #15123a 45%, #1a1246 100%);
+  color: #f0eaff;
+  overflow-x: hidden;
+}
 
-        .star {
-            position: absolute;
-            background: #fff;
-            border-radius: 50%;
-            animation: twinkle 3s infinite ease-in-out;
-        }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, #fff, transparent),
+    radial-gradient(1px 1px at 34% 44%, #c9dcff, transparent),
+    radial-gradient(1.5px 1.5px at 58% 22%, #fff, transparent),
+    radial-gradient(1px 1px at 72% 56%, #e0d4ff, transparent),
+    radial-gradient(1px 1px at 86% 34%, #fff, transparent),
+    radial-gradient(1px 1px at 24% 72%, #b6c8ff, transparent),
+    radial-gradient(1.5px 1.5px at 46% 82%, #fff, transparent),
+    radial-gradient(1px 1px at 64% 14%, #d9e8ff, transparent),
+    radial-gradient(1px 1px at 92% 68%, #fff, transparent),
+    radial-gradient(1px 1px at 8% 88%, #c7dcff, transparent);
+  background-size: 100% 100%;
+  opacity: 0.55;
+  animation: twinkle 5s infinite ease-in-out;
+}
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 1; }
-        }
+@keyframes twinkle {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.7; }
+}
 
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px 20px;
-        }
+header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 40px 15px 20px;
+}
 
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+h1 {
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  color: #e4d6ff;
+  text-shadow:
+    0 0 10px #b48bff,
+    0 0 24px #7a4fd880,
+    0 0 40px #5a3fb060;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
 
-        header h1 {
-            font-size: 42px;
-            color: #e2cfff;
-            text-shadow: 0 0 12px #9b6cf0;
-            margin-bottom: 10px;
-        }
+.subtitle {
+  font-size: 1.08rem;
+  color: #cfc2f0;
+  opacity: 0.88;
+  margin-bottom: 22px;
+}
 
-        header p {
-            color: #c9b8f0;
-            font-size: 18px;
-        }
+.nav-top {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 30px;
+  text-align: center;
+}
 
-        .nav-links {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+.nav-top a {
+  color: #d6c4ff;
+  text-decoration: none;
+  margin: 0 12px;
+  font-size: 1.1rem;
+  transition: color 0.25s;
+}
 
-        .nav-links a {
-            color: #d4c0ff;
-            margin: 0 12px;
-            text-decoration: none;
-        }
+.nav-top a:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #9b7bff;
+}
 
-        .nav-links a:hover {
-            color: #fff;
-            text-decoration: underline;
-        }
+.tab-wrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
 
-        /* 标签栏 */
-        .tab-wrap {
-            text-align: center;
-            margin-bottom: 35px;
-        }
+.tab-btn {
+  padding: 12px 26px;
+  border: none;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f3ecff;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 1px solid rgba(180, 140, 255, 0.25);
+  transition: all 0.3s;
+}
 
-        .tab-btn {
-            padding: 12px 22px;
-            margin: 0 6px;
-            border: none;
-            border-radius: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #e9e2ff;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-            backdrop-filter: blur(8px);
-        }
+.tab-btn.active,
+.tab-btn:hover {
+  background: linear-gradient(90deg, #7b4fd8, #4f9aff);
+  box-shadow:
+    0 0 12px #7b4fd880,
+    0 0 22px #4f9aff55;
+  border-color: transparent;
+}
 
-        .tab-btn.active {
-            background: linear-gradient(90deg, #805ad5, #4299e1);
-            box-shadow: 0 0 14px #7b58e080;
-        }
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 14px 40px;
+}
 
-        .tab-btn:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.18);
-        }
+.tab-content {
+  display: none;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 22px;
+}
 
-        .tab-content {
-            display: none;
-        }
+.tab-content.active {
+  display: grid;
+}
 
-        .tab-content.active {
-            display: block;
-        }
+.zodiac-card {
+  background: linear-gradient(180deg, rgba(40, 30, 80, 0.8), rgba(25, 18, 56, 0.85));
+  border: 1px solid rgba(170, 130, 255, 0.22);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 10px 28px #00000055,
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
 
-        /* 星座网格 */
-        .zodiac-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
-        }
+.zodiac-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 18px 40px #00000066,
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 0 26px #7b4fd844;
+}
 
-        .zodiac-card {
-            background: rgba(255, 255, 255, 0.07);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(210, 180, 255, 0.2);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+/* 卡片顶部：统一梦幻容器 */
+.card-img-area {
+  position: relative;
+  height: 230px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.75) 1px, transparent 2px),
+    radial-gradient(circle at 75% 55%, rgba(255,255,255,0.6) 1px, transparent 2px),
+    radial-gradient(circle at 40% 80%, rgba(255,255,255,0.5) 1px, transparent 2px),
+    linear-gradient(135deg, #111a44 0%, #1c2466 45%, #332a74 100%);
+}
 
-        .zodiac-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 8px 24px #8459dd44;
-        }
+.card-img-area::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 500px at 15% 10%, rgba(130, 90, 255, 0.35), transparent 60%),
+    radial-gradient(700px 420px at 85% 92%, rgba(70, 130, 255, 0.32), transparent 55%),
+    radial-gradient(500px 340px at 50% 50%, rgba(180, 110, 255, 0.22), transparent 60%);
+  pointer-events: none;
+}
 
-        /* 卡片顶部：纯CSS星空渐变图区 */
-        .card-img {
-            width: 100%;
-            height: 180px;
-            position: relative;
-            overflow: hidden;
-            background:
-                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.9) 1px, transparent 2px),
-                radial-gradient(circle at 70% 60%, rgba(255,255,255,0.8) 1px, transparent 2px),
-                radial-gradient(circle at 40% 80%, rgba(255,255,255,0.7) 1px, transparent 2px),
-                radial-gradient(circle at 85% 25%, rgba(255,255,255,0.6) 1px, transparent 2px),
-                linear-gradient(135deg, #0b1a44 0%, #172264 25%, #243070 50%, #3a2f7a 75%, #553d8c 100%);
-        }
+.card-img-area::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 14% 22%, #fff, transparent),
+    radial-gradient(1px 1px at 36% 68%, #fff, transparent),
+    radial-gradient(1px 1px at 56% 34%, #d9e8ff, transparent),
+    radial-gradient(2px 2px at 76% 78%, #fff, transparent),
+    radial-gradient(1px 1px at 26% 52%, #b6c8ff, transparent),
+    radial-gradient(1px 1px at 66% 16%, #fff, transparent),
+    radial-gradient(1px 1px at 84% 48%, #c7dcff, transparent),
+    radial-gradient(1px 1px at 44% 88%, #fff, transparent);
+  opacity: 0.85;
+  animation: twinkle 4.5s infinite ease-in-out;
+  pointer-events: none;
+}
 
-        .card-img::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(1200px 600px at 20% 10%, rgba(120, 90, 255, 0.35), transparent 60%),
-                radial-gradient(900px 500px at 80% 90%, rgba(70, 130, 255, 0.35), transparent 55%),
-                radial-gradient(700px 400px at 50% 50%, rgba(180, 110, 255, 0.25), transparent 60%);
-            pointer-events: none;
-        }
+/* 泡泡层 */
+.bubbles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
 
-        .card-img::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(2px 2px at 15% 25%, #fff, transparent),
-                radial-gradient(1px 1px at 35% 70%, #fff, transparent),
-                radial-gradient(1px 1px at 55% 35%, #d9e8ff, transparent),
-                radial-gradient(2px 2px at 75% 80%, #fff, transparent),
-                radial-gradient(1px 1px at 25% 55%, #b6c8ff, transparent),
-                radial-gradient(1px 1px at 65% 15%, #fff, transparent),
-                radial-gradient(1px 1px at 85% 45%, #c7dcff, transparent),
-                radial-gradient(1px 1px at 45% 90%, #fff, transparent);
-            opacity: 0.9;
-            animation: twinkle 4s infinite ease-in-out;
-        }
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.55), rgba(180, 140, 255, 0.15) 40%, rgba(120, 90, 255, 0.05) 70%);
+  box-shadow:
+    inset 0 0 8px rgba(255,255,255,0.35),
+    0 0 14px rgba(180, 140, 255, 0.35);
+  animation: float 7s infinite ease-in-out;
+}
 
-        .card-body {
-            padding: 20px;
-        }
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-18px) scale(1.06); }
+}
 
-        .card-body h3 {
-            font-size: 22px;
-            color: #e5d8ff;
-            margin-bottom: 8px;
-        }
+/* 光效层 */
+.glows {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
 
-        .date-range {
-            color: #b8a2e2;
-            font-size: 14px;
-            margin-bottom: 14px;
-        }
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(18px);
+  opacity: 0.55;
+  animation: pulse 6s infinite ease-in-out;
+}
 
-        .section-title {
-            color: #d4bfff;
-            font-weight: bold;
-            margin-top: 12px;
-            margin-bottom: 4px;
-            font-size: 15px;
-        }
+@keyframes pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.08); }
+}
 
-        .desc {
-            line-height: 1.6;
-            color: #e2ddf7;
-            font-size: 14px;
-        }
+/* 星座符号 */
+.zodiac-symbol {
+  position: absolute;
+  right: 18px;
+  top: 14px;
+  font-size: 34px;
+  color: #fff;
+  text-shadow:
+    0 0 10px #b48bff,
+    0 0 22px #7a4fd8,
+    0 0 34px #4f9aff;
+  z-index: 3;
+  opacity: 0.92;
+}
 
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 20px;
-            color: #b9a8e3;
-            font-size: 14px;
-        }
-    </style>
+/* 卡片主体 */
+.card-body {
+  padding: 20px;
+  background: linear-gradient(180deg, rgba(30, 22, 68, 0.9), rgba(20, 14, 48, 0.95));
+  position: relative;
+  z-index: 2;
+}
+
+.sign-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+  color: #f3ecff;
+}
+
+.date-range {
+  color: #b9a8e3;
+  font-size: 0.92rem;
+  margin-bottom: 14px;
+}
+
+.section-block {
+  margin-bottom: 14px;
+}
+
+.section-block h4 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  color: #ffd1e8;
+  font-size: 1rem;
+}
+
+.section-block p {
+  color: #e4ddf5;
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+
+footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 30px 15px;
+  color: #a794d1;
+  font-size: 0.92rem;
+}
+
+/* ========== 十二星座独立 CSS 梦幻图案 ========== */
+
+/* Aries */
+.aries-art {
+  position: absolute;
+  left: 10%;
+  top: 22%;
+  width: 62%;
+  height: 56%;
+  z-index: 2;
+}
+.aries-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 40%, #ff9060 0 10%, transparent 11%),
+    radial-gradient(circle at 42% 40%, #ffb070 0 14%, transparent 15%),
+    radial-gradient(circle at 54% 40%, #ffd090 0 10%, transparent 11%),
+    radial-gradient(circle at 42% 58%, #ff7090 0 14%, transparent 15%);
+  filter: blur(0.6px);
+  clip-path: polygon(
+    18% 55%, 24% 42%, 32% 34%, 40% 30%, 48% 32%, 54% 40%, 58% 52%,
+    62% 44%, 70% 38%, 78% 40%, 82% 48%, 76% 54%, 68% 52%, 60% 58%,
+    54% 66%, 46% 68%, 38% 64%, 30% 58%, 24% 60%
+  );
+}
+
+/* Taurus */
+.taurus-art {
+  position: absolute;
+  left: 8%;
+  top: 20%;
+  width: 66%;
+  height: 60%;
+  z-index: 2;
+}
+.taurus-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 28% 44%, #60ffb0 0 12%, transparent 13%),
+    radial-gradient(circle at 44% 40%, #90ffd0 0 16%, transparent 17%),
+    radial-gradient(circle at 60% 44%, #b0ffe0 0 12%, transparent 13%),
+    radial-gradient(circle at 44% 60%, #40e0a0 0 14%, transparent 15%);
+  clip-path: polygon(
+    14% 56%, 22% 42%, 34% 34%, 44% 32%, 54% 36%, 64% 44%, 72% 54%,
+    78% 62%, 72% 68%, 60% 64%, 48% 66%, 36% 64%, 24% 62%, 16% 60%
+  );
+}
+
+/* Gemini */
+.gemini-art {
+  position: absolute;
+  left: 12%;
+  top: 16%;
+  width: 60%;
+  height: 68%;
+  z-index: 2;
+}
+.gemini-art::before,
+.gemini-art::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 42%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 50% 30%, #c090ff 0 14%, transparent 15%),
+    radial-gradient(circle at 50% 54%, #9060ff 0 16%, transparent 17%),
+    radial-gradient(circle at 50% 78%, #6040ff 0 12%, transparent 13%);
+  border-radius: 42% 58% 46% 54%;
+}
+.gemini-art::before { left: 0; }
+.gemini-art::after { right: 0; background:
+  radial-gradient(circle at 50% 30%, #e0b0ff 0 14%, transparent 15%),
+  radial-gradient(circle at 50% 54%, #b080ff 0 16%, transparent 17%),
+  radial-gradient(circle at 50% 78%, #8060ff 0 12%, transparent 13%);
+}
+
+/* Cancer */
+.cancer-art {
+  position: absolute;
+  left: 14%;
+  top: 24%;
+  width: 56%;
+  height: 52%;
+  z-index: 2;
+}
+.cancer-art::before {
+  content: "";
+  position: absolute;
+  inset: 18% 0 0 0;
+  background:
+    radial-gradient(circle at 30% 50%, #90d0ff 0 14%, transparent 15%),
+    radial-gradient(circle at 50% 44%, #c0e4ff 0 18%, transparent 19%),
+    radial-gradient(circle at 70% 50%, #70b0ff 0 14%, transparent 15%);
+  border-radius: 50%;
+}
+.cancer-art::after {
+  content: "";
+  position: absolute;
+  left: 28%;
+  top: 6%;
+  width: 44%;
+  height: 30%;
+  background:
+    radial-gradient(circle at 50% 60%, #ffffff 0 22%, #c0e4ff 34%, transparent 36%);
+  border-radius: 50%;
+}
+
+/* Leo */
+.leo-art {
+  position: absolute;
+  left: 8%;
+  top: 18%;
+  width: 64%;
+  height: 64%;
+  z-index: 2;
+}
+.leo-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 22% 40%, #ffd060 0 14%, transparent 15%),
+    radial-gradient(circle at 40% 26%, #ffe080 0 18%, transparent 19%),
+    radial-gradient(circle at 58% 22%, #fff0a0 0 14%, transparent 15%),
+    radial-gradient(circle at 74% 34%, #ffd060 0 12%, transparent 13%),
+    radial-gradient(circle at 40% 54%, #ffa040 0 16%, transparent 17%),
+    radial-gradient(circle at 60% 58%, #ff8060 0 14%, transparent 15%);
+  clip-path: polygon(
+    12% 50%, 20% 34%, 32% 24%, 44% 20%, 56% 24%, 68% 34%, 76% 46%,
+    82% 58%, 74% 66%, 62% 64%, 50% 68%, 38% 66%, 26% 64%, 16% 60%
+  );
+}
+
+/* Virgo */
+.virgo-art {
+  position: absolute;
+  left: 16%;
+  top: 14%;
+  width: 52%;
+  height: 72%;
+  z-index: 2;
+}
+.virgo-art::before {
+  content: "";
+  position: absolute;
+  left: 22%;
+  top: 4%;
+  width: 56%;
+  height: 34%;
+  background:
+    radial-gradient(circle at 50% 50%, #ffffff 0 20%, #e0c0ff 34%, transparent 36%);
+  border-radius: 50%;
+}
+.virgo-art::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 30%;
+  width: 100%;
+  height: 68%;
+  background:
+    linear-gradient(180deg, #c090ff 0%, #9060ff 45%, #6040ff 100%);
+  clip-path: polygon(
+    20% 0, 34% 4%, 42% 14%, 46% 26%, 44% 40%, 38% 52%, 34% 66%,
+    32% 80%, 36% 92%, 46% 96%, 56% 92%, 64% 80%, 66% 66%, 62% 52%,
+    56% 40%, 54% 26%, 58% 14%, 66% 4%, 80% 0, 84% 10%, 78% 22%,
+    68% 30%, 58% 34%, 42% 34%, 32% 30%, 22% 22%, 16% 10%
+  );
+  opacity: 0.92;
+}
+
+/* Libra */
+.libra-art {
+  position: absolute;
+  left: 18%;
+  top: 20%;
+  width: 54%;
+  height: 60%;
+  z-index: 2;
+}
+.libra-art::before {
+  content: "";
+  position: absolute;
+  left: 44%;
+  top: 4%;
+  width: 12%;
+  height: 70%;
+  background: linear-gradient(180deg, #ffffff 0%, #e090ff 50%, #9060ff 100%);
+  border-radius: 10px;
+}
+.libra-art::after {
+  content: "";
+  position: absolute;
+  left: 6%;
+  top: 60%;
+  width: 88%;
+  height: 22%;
+  background:
+    radial-gradient(circle at 20% 50%, #ffb0e0 0 14%, transparent 15%),
+    radial-gradient(circle at 50% 50%, #c090ff 0 16%, transparent 17%),
+    radial-gradient(circle at 80% 50%, #90b0ff 0 14%, transparent 15%);
+  border-radius: 50%;
+}
+
+/* Scorpio */
+.scorpio-art {
+  position: absolute;
+  left: 10%;
+  top: 22%;
+  width: 62%;
+  height: 56%;
+  z-index: 2;
+}
+.scorpio-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 24% 44%, #9040ff 0 14%, transparent 15%),
+    radial-gradient(circle at 44% 40%, #c060ff 0 16%, transparent 17%),
+    radial-gradient(circle at 64% 44%, #ff60c0 0 14%, transparent 15%),
+    radial-gradient(circle at 44% 62%, #6020d0 0 14%, transparent 15%);
+  clip-path: polygon(
+    16% 54%, 24% 42%, 36% 34%, 46% 32%, 56% 38%, 64% 48%, 70% 58%,
+    76% 66%, 82% 72%, 76% 78%, 66% 74%, 58% 66%, 50% 60%, 40% 58%,
+    30% 56%, 22% 58%, 14% 56%
+  );
+}
+
+/* Sagittarius */
+.sagittarius-art {
+  position: absolute;
+  left: 8%;
+  top: 18%;
+  width: 66%;
+  height: 64%;
+  z-index: 2;
+}
+.sagittarius-art::before {
+  content: "";
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  width: 40%;
+  height: 80%;
+  background:
+    radial-gradient(circle at 40% 30%, #90c0ff 0 14%, transparent 15%),
+    radial-gradient(circle at 60% 50%, #6090ff 0 16%, transparent 17%),
+    radial-gradient(circle at 40% 70%, #4070ff 0 14%, transparent 15%);
+  clip-path: polygon(
+    30% 0, 44% 4%, 52% 14%, 54% 28%, 48% 40%, 42% 52%, 40% 66%,
+    42% 80%, 48% 92%, 40% 96%, 32% 88%, 28% 74%, 24% 60%, 22% 44%,
+    24% 28%, 28% 14%, 34% 4%
+  );
+}
+.sagittarius-art::after {
+  content: "";
+  position: absolute;
+  left: 44%;
+  top: 36%;
+  width: 48%;
+  height: 10%;
+  background: linear-gradient(90deg, #ffffff 0%, #90c0ff 40%, #4070ff 100%);
+  border-radius: 4px;
+  transform: rotate(-12deg);
+  box-shadow: 0 0 14px #6090ff;
+}
+
+/* Capricorn */
+.capricorn-art {
+  position: absolute;
+  left: 10%;
+  top: 20%;
+  width: 64%;
+  height: 60%;
+  z-index: 2;
+}
+.capricorn-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 22% 40%, #80c0ff 0 14%, transparent 15%),
+    radial-gradient(circle at 42% 34%, #b0e0ff 0 16%, transparent 17%),
+    radial-gradient(circle at 62% 40%, #ffffff 0 14%, transparent 15%),
+    radial-gradient(circle at 42% 60%, #60a0ff 0 14%, transparent 15%);
+  clip-path: polygon(
+    14% 56%, 22% 42%, 34% 32%, 44% 28%, 54% 34%, 62% 44%, 70% 54%,
+    78% 64%, 72% 72%, 60% 68%, 48% 70%, 36% 68%, 24% 64%, 16% 60%
+  );
+}
+
+/* Aquarius */
+.aquarius-art {
+  position: absolute;
+  left: 14%;
+  top: 16%;
+  width: 56%;
+  height: 68%;
+  z-index: 2;
+}
+.aquarius-art::before {
+  content: "";
+  position: absolute;
+  left: 22%;
+  top: 6%;
+  width: 56%;
+  height: 36%;
+  background:
+    radial-gradient(circle at 50% 50%, #90ffff 0 18%, #40c0ff 32%, transparent 34%);
+  border-radius: 50%;
+}
+.aquarius-art::after {
+  content: "";
+  position: absolute;
+  left: 4%;
+  top: 34%;
+  width: 92%;
+  height: 64%;
+  background:
+    radial-gradient(circle at 20% 40%, #60c0ff 0 14%, transparent 15%),
+    radial-gradient(circle at 44% 30%, #90ffff 0 16%, transparent 17%),
+    radial-gradient(circle at 70% 40%, #c0ffff 0 14%, transparent 15%),
+    radial-gradient(circle at 44% 60%, #4090ff 0 14%, transparent 15%);
+  clip-path: polygon(
+    10% 20%, 22% 24%, 30% 34%, 34% 46%, 32% 60%, 28% 74%, 30% 86%,
+    40% 92%, 52% 88%, 62% 78%, 68% 64%, 70% 50%, 68% 36%, 62% 24%,
+    50% 18%, 38% 20%, 26% 22%, 14% 20%
+  );
+}
+
+/* Pisces */
+.pisces-art {
+  position: absolute;
+  left: 10%;
+  top: 22%;
+  width: 62%;
+  height: 56%;
+  z-index: 2;
+}
+.pisces-art::before,
+.pisces-art::after {
+  content: "";
+  position: absolute;
+  top: 14%;
+  width: 44%;
+  height: 74%;
+  background:
+    radial-gradient(circle at 50% 30%, #ffb0e0 0 14%, transparent 15%),
+    radial-gradient(circle at 50% 54%, #c080ff 0 16%, transparent 17%),
+    radial-gradient(circle at 50% 78%, #8060ff 0 12%, transparent 13%);
+  border-radius: 46% 54% 50% 50%;
+}
+.pisces-art::before { left: 0; transform: scaleX(-1); }
+.pisces-art::after { right: 0; background:
+  radial-gradient(circle at 50% 30%, #b0d0ff 0 14%, transparent 15%),
+  radial-gradient(circle at 50% 54%, #80a0ff 0 16%, transparent 17%),
+  radial-gradient(circle at 50% 78%, #6080ff 0 12%, transparent 13%);
+}
+</style>
 </head>
+
 <body>
 
-<div class="stars"></div>
+<header>
+  <h1>CosmicMatch ✦ Crystal Dream Horoscope</h1>
+  <p class="subtitle">Daily · Monthly · 2026 Yearly · 2027 Yearly Zodiac Predictions | Love · Career · Health</p>
+</header>
 
-<div class="container">
-    <header>
-        <h1>CosmicMatch ✧ Crystal Dream Horoscope</h1>
-        <p>Daily · Monthly · 2026 Yearly · 2027 Yearly Zodiac Predictions | Love · Career · Health</p>
-    </header>
-
-    <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/privacy-policy.html">Privacy Policy</a>
-    </div>
-
-    <div class="tab-wrap">
-        <button class="tab-btn active" data-tab="daily">Daily Horoscope</button>
-        <button class="tab-btn" data-tab="monthly">Monthly Horoscope</button>
-        <button class="tab-btn" data-tab="year26">2026 Yearly</button>
-        <button class="tab-btn" data-tab="year27">2027 Yearly</button>
-    </div>
-
-    <!-- Daily -->
-    <div class="tab-content active" id="daily">
-        <div class="zodiac-grid">
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Aries cosmic background"></div>
-                <div class="card-body">
-                    <h3>Aries ♈</h3>
-                    <div class="date-range">Mar 21 – Apr 19</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Your bold energy draws fresh romantic attention today. Single Rams may cross paths with someone who shares your passion. Couples thrive on spontaneous, lighthearted moments.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Your drive peaks in the morning. This is ideal for launching quick action items. Pause before debating ideas with teammates to avoid unnecessary friction.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Adrenaline may drain you fast. Sip water regularly and step outside for short air breaks. A brisk walk will release built-up tension.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Taurus cosmic background"></div>
-                <div class="card-body">
-                    <h3>Taurus ♉</h3>
-                    <div class="date-range">Apr 20 – May 20</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Soft, quiet intimacy fills your romantic sphere. Attached Taureans will appreciate small, thoughtful gestures. Singles favor slow, gentle connections over rushed encounters.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Routine tasks move smoothly today. Focus on refining details rather than chasing big financial choices; major money decisions are better delayed.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Your body craves comfort. Stick to warm, nourishing meals and skip heavy greasy foods that weigh down your digestion.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Gemini cosmic background"></div>
-                <div class="card-body">
-                    <h3>Gemini ♊</h3>
-                    <div class="date-range">May 21 – Jun 21</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Witty conversation becomes your romantic superpower. Singles attract admirers through humor and curiosity. Chat openly with your partner to deepen understanding.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Messages and incoming calls bring new opportunities. Keep notes of ideas, but hold off on locking in permanent commitments today.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Mental fatigue creeps in easily. Step away from screens and breathe fresh air to calm racing thoughts.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Cancer cosmic background"></div>
-                <div class="card-body">
-                    <h3>Cancer ♋</h3>
-                    <div class="date-range">Jun 22 – Jul 22</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Nurturing energy surrounds your relationships. Quality quiet time with loved ones strengthens emotional bonds. Honor your need for gentle closeness.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Your sensitivity may make small workplace conflicts feel bigger. Maintain a steady pace and avoid reacting impulsively to minor frustrations.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Protect your emotional state. Steer clear of draining people and carve out peaceful downtime to recharge your spirit.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Leo cosmic background"></div>
-                <div class="card-body">
-                    <h3>Leo ♌</h3>
-                    <div class="date-range">Jul 23 – Aug 22</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Your radiant charm shines brightly. Leos in relationships can delight partners with sweet surprises. Singles draw admiring eyes wherever you go.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Colleagues and supervisors notice your talents. Keep ego in check to avoid clashes with teammates competing for recognition.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Excitement can overtax your nervous system. Guard your sleep schedule and avoid overcommitting to social plans.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Virgo cosmic background"></div>
-                <div class="card-body">
-                    <h3>Virgo ♍</h3>
-                    <div class="date-range">Aug 23 – Sep 22</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Small thoughtful gestures warm your bond. Resist the urge to nitpick your partner’s flaws; focus on gratitude instead of criticism.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">This is a fantastic day to organize workflows. Tiny details you polish now will create meaningful rewards down the line.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Use today to tweak daily routines. Gentle stretching eases muscle tension and grounds your busy mind.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Libra cosmic background"></div>
-                <div class="card-body">
-                    <h3>Libra ♎</h3>
-                    <div class="date-range">Sep 23 – Oct 23</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Harmony takes center stage in romance. You can calmly resolve minor disagreements and restore peace within your partnership.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Seek balance between work and rest. Artistic and aesthetic pursuits lift your mood and unlock creative inspiration.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Overthinking can drain your energy. Soft music or quiet meditation helps quiet swirling thoughts.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Scorpio cosmic background"></div>
-                <div class="card-body">
-                    <h3>Scorpio ♏</h3>
-                    <div class="date-range">Oct 24 – Nov 22</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Deep emotional connection defines your romantic day. Trust remains the foundation for any lasting bond you nurture.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Research and investigative work thrive today. Avoid power struggles with coworkers; quiet strategy wins better than confrontation.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Hidden stress builds silently. Slow breathing exercises help release tension stored deep inside your body.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Sagittarius cosmic background"></div>
-                <div class="card-body">
-                    <h3>Sagittarius ♐</h3>
-                    <div class="date-range">Nov 23 – Dec 21</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Adventurous romance calls to you. Single archers may meet kindred spirits who share your love of exploration and learning.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Curiosity unlocks unexpected opportunities. Embrace learning, but avoid making promises you cannot keep later.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Outdoor movement lifts your mood. Watch for minor strains and do not overexert yourself during fun activities.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Capricorn cosmic background"></div>
-                <div class="card-body">
-                    <h3>Capricorn ♑</h3>
-                    <div class="date-range">Dec 22 – Jan 19</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Your love language leans into practical care. You show devotion through steady, reliable actions rather than flashy gestures.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Focus on long-term milestones. Your consistent hard work will catch the eye of leadership figures around you.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Do not push your body beyond safe limits. Schedule intentional breaks to prevent physical burnout.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Aquarius cosmic background"></div>
-                <div class="card-body">
-                    <h3>Aquarius ♒</h3>
-                    <div class="date-range">Jan 20 – Feb 18</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Unconventional romance unfolds. Platonic friendships may shift into romantic territory. Preserve your personal freedom within relationships.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Fresh creative ideas bubble up. Friends and community contacts bring unexpected professional openings your way.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Irregular sleep weakens your energy. Stick to a consistent bedtime even when brainstorming exciting new concepts.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Pisces cosmic background"></div>
-                <div class="card-body">
-                    <h3>Pisces ♓</h3>
-                    <div class="date-range">Feb 19 – Mar 20</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Your intuitive empathy deepens romantic bonds. Your gentle nature makes your partner feel truly seen and cherished today.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Creative inspiration flows freely. Guard your energy from draining coworkers who demand too much of your time.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">You easily absorb surrounding moods. Seek quiet alone time to reset your sensitive energetic field.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Monthly -->
-    <div class="tab-content" id="monthly">
-        <div class="zodiac-grid">
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Aries monthly cosmic background"></div>
-                <div class="card-body">
-                    <h3>Aries ♈</h3>
-                    <div class="date-range">Mar 21 – Apr 19</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Romantic sparks ignite early in the month. Single Aries may meet someone who matches your fire. Couples should pause before reacting to heated disagreements mid-month.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">This month rewards bold action. Launch new projects in the first two weeks. Watch for reckless decisions that may create extra cleanup work later.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Your vitality runs high, yet burnout lurks. Build regular rest intervals and avoid high-risk physical activities without proper preparation.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Taurus monthly cosmic background"></div>
-                <div class="card-body">
-                    <h3>Taurus ♉</h3>
-                    <div class="date-range">Apr 20 – May 20</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Your romantic sphere leans into comfort and security. Partners find joy in cozy home moments. Singles prefer slow courtship over rushed romantic gestures.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Financial stability becomes your core theme. Focus on growing savings, and steer clear of speculative investments that threaten your safety net.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Digestive sensitivity rises this month. Choose mild, whole foods and stick to consistent meal schedules to avoid discomfort.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Gemini monthly cosmic background"></div>
-                <div class="card-body">
-                    <h3>Gemini ♊</h3>
-                    <div class="date-range">May 21 – Jun 21</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Communication fuels your love life. Flirtatious exchanges pop up in social spaces. Guard against scattered attention that leaves your partner feeling overlooked.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">New contacts, interviews and collaborative offers arrive. Mid-month workload may overwhelm you; prioritize tasks instead of tackling everything at once.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Mental tension accumulates steadily. Reduce screen time and practice light meditation to quiet constant mental chatter.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Cancer monthly cosmic background"></div>
-                <div class="card-body">
-                    <h3>Cancer ♋</h3>
-                    <div class="date-range">Jun 22 – Jul 22</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Romance blends closely with family energy this month. Deep emotional safety grows when you share vulnerable feelings with your partner.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Home and family matters take priority. You may resolve lingering old conflicts that have quietly weighed on your professional progress.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Emotional healing is your biggest health task. Stop absorbing other people’s stress as if it belongs to you.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Leo monthly cosmic background"></div>
-                <div class="card-body">
-                    <h3>Leo ♌</h3>
-                    <div class="date-range">Jul 23 – Aug 22</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Your romantic life becomes vibrant and social. Your magnetism draws admirers. Be mindful of ego clashes that can overshadow sweet moments with your partner.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Recognition arrives from supervisors or clients. This is an excellent window to build your personal brand and showcase your talents publicly.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Excitement can raise your heart rate and stress levels. Balance busy social plans with quiet nights to recharge your spirit.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Virgo monthly cosmic background"></div>
-                <div class="card-body">
-                    <h3>Virgo ♍</h3>
-                    <div class="date-range">Aug 23 – Sep 22</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Small caring gestures strengthen your bond. Practice accepting imperfections and avoid harsh criticism that wounds your partner’s feelings.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Wrap up unfinished projects before launching new work. This month rewards careful planning and methodical problem-solving.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Minor health alerts may surface. Rebuild consistent sleep and daily habits to prevent small issues from growing larger.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Libra monthly cosmic background"></div>
-                <div class="card-body">
-                    <h3>Libra ♎</h3>
-                    <div class="date-range">Sep 23 – Oct 23</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Relationships stand as your central theme. This month favors dating, commitment and repairing old rifts within your partnership.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Negotiations and business agreements come forward. Mid-month you will need to compromise instead of pushing for perfect outcomes.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Stress comes from trying to satisfy everyone around you. Art and music create peaceful escape from endless mental weighing.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Scorpio monthly cosmic background"></div>
-                <div class="card-body">
-                    <h3>Scorpio ♏</h3>
-                    <div class="date-range">Oct 24 – Nov 22</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Your love life enters a transformative phase. Toxic connections may dissolve, clearing space for deeper, more authentic romantic bonds.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Old chapters close in your professional world. Cut draining work alliances and rebuild your workflow from a stronger foundation.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Deep emotional burdens need release. Gentle detox practices and quiet rest help heal old wounds stored in your body.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Sagittarius monthly cosmic background"></div>
-                <div class="card-body">
-                    <h3>Sagittarius ♐</h3>
-                    <div class="date-range">Nov 23 – Dec 21</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Romance links closely with travel and learning. You may meet promising partners during trips, workshops or educational classes.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Expansion, travel and study open doors. Guard against over-optimism that makes you overlook risks in big professional decisions.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Outdoor adventures energize you. Stay alert for minor injuries and avoid reckless physical risks during excursions.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Capricorn monthly cosmic background"></div>
-                <div class="card-body">
-                    <h3>Capricorn ♑</h3>
-                    <div class="date-range">Dec 22 – Jan 19</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Your love grows slowly through practical support. You may not see grand romantic gestures, but steady reliability anchors your partnership.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Career advancement peaks this month. Heavy workload arrives early, and recognition or promotion may emerge by month’s end.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Work pressure drains your stamina. Schedule regular breaks and avoid pulling late nights to preserve long-term health.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Aquarius monthly cosmic background"></div>
-                <div class="card-body">
-                    <h3>Aquarius ♒</h3>
-                    <div class="date-range">Jan 20 – Feb 18</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Friendship-based romance flourishes. Casual pals may evolve into romantic partners. Keep space for your independent hobbies and interests.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Group projects and community connections bring opportunities. New friends introduce innovative ideas that reshape your professional path.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Social gatherings deplete your mental energy. Protect yourself by reserving quiet alone time to reset your mind.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Pisces monthly cosmic background"></div>
-                <div class="card-body">
-                    <h3>Pisces ♓</h3>
-                    <div class="date-range">Feb 19 – Mar 20</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Romance brims with imagination and soft empathy. Your compassionate nature deepens emotional intimacy with your partner.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Creative and spiritual projects take center stage. Artistic work brings inspiration, yet you must shield your energy from draining peers.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">You easily absorb negativity from others. Build gentle boundaries to stop outside emotions from exhausting your body and mind.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 2026 Yearly -->
-    <div class="tab-content" id="year26">
-        <div class="zodiac-grid">
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Aries 2026 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Aries ♈</h3>
-                    <div class="date-range">Mar 21 – Apr 19</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">2026 brings a passionate romantic chapter. Single Rams may meet partners who match your fire. Couples must practice active listening to reduce impulsive conflicts.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">This year is defined by bold reinvention. Many fresh project openings arrive, yet you must curb impulsive spending and rushed business choices.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Your energy remains high, yet burnout is a real risk. Stick to regular exercise and avoid overworking yourself for long stretches.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Taurus 2026 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Taurus ♉</h3>
-                    <div class="date-range">Apr 20 – May 20</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Loyalty and stability shape your romantic life. Couples build deeper trust together. Singles move slowly, prioritizing reliable, grounded partners.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Wealth and security become your core focus. Steady effort lifts your income. This year favors saving and long-term property planning.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Watch weight shifts and digestive comfort. Gentle daily movement and balanced meals help you maintain physical equilibrium.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Gemini 2026 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Gemini ♊</h3>
-                    <div class="date-range">May 21 – Jun 21</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Your love life grows through dialogue. New romantic connections emerge through social events. Avoid scattered feelings that prevent deep commitment.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Networking opportunities flood your year. Your communication skills become your greatest professional asset across interviews and collaborations.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Mental tiredness will surface repeatedly. Reduce overthinking and protect sleep quality to preserve your cognitive energy.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Cancer 2026 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Cancer ♋</h3>
-                    <div class="date-range">Jun 22 – Jul 22</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Romance carries a warm, family-oriented tone. Your relationships grow deeper as you create safe emotional spaces for your loved ones.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Home and family are central themes. You may relocate, renovate or heal old family wounds that once limited your professional growth.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Emotional wellbeing tops your health priority list. Do not carry other people’s burdens throughout the whole year.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Leo 2026 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Leo ♌</h3>
-                    <div class="date-range">Jul 23 – Aug 22</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Romance lights up your world in 2026. You attract admirers easily. Keep ego in check to prevent clashes that harm your closest bonds.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">This is your shining year. Praise, public recognition and status shifts arrive. Promotions and leadership chances are within your reach.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Stress may affect your heart and circulation. Maintain a balanced lifestyle and carve out enough rest between busy events.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Virgo 2026 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Virgo ♍</h3>
-                    <div class="date-range">Aug 23 – Sep 22</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Love improves through consistent care. Release the habit of harsh self-criticism and stop picking apart your partner’s small flaws.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">2026 centers on routine, health and finishing lingering work. Clear out messy old projects before you begin brand-new ventures.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Small daily health tweaks create big rewards. Balance productivity with rest so you do not deplete your reserves.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Libra 2026 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Libra ♎</h3>
-                    <div class="date-range">Sep 23 – Oct 23</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Relationships dominate your year. This is a strong window for marriage and deep commitment. Resolve old conflicts instead of letting them linger.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Business partnerships become your major theme. Seek healthy balance and stop overextending yourself to please every person around you.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Stress builds from endless compromise. Learn to set firm boundaries to protect your mental peace.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Scorpio 2026 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Scorpio ♏</h3>
-                    <div class="date-range">Oct 24 – Nov 22</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Your love life undergoes deep transformation. Toxic relationships fade away. Authentic, profound romance may appear later in the calendar year.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">This year is all about inner reinvention. Old chapters close permanently, creating space for you to rebuild your professional life from scratch.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Release past trauma stored in your body. Deep rest and healing practices help you move forward with lighter energy.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Sagittarius 2026 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Sagittarius ♐</h3>
-                    <div class="date-range">Nov 23 – Dec 21</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Romance blooms through travel and study. You meet people from diverse cultural backgrounds who broaden your worldview.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Travel, education and expansion shape your professional path. Your optimism unlocks doors, yet verify facts before committing to major choices.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">You stay active all year, but watch for accidents during trips. Keep hydrated and avoid reckless physical risks.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Capricorn 2026 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Capricorn ♑</h3>
-                    <div class="date-range">Dec 22 – Jan 19</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Your love unfolds gradually. You express care through practical actions, and loyalty remains the foundation of your closest bonds.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Long-term hard work earns rewards. Steady progress lifts your career, and you build stronger long-term financial security over the year.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Heavy workloads hit hardest in early months. Take consistent breaks and protect your joints from strain.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Aquarius 2026 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Aquarius ♒</h3>
-                    <div class="date-range">Jan 20 – Feb 18</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Open-minded, unconventional romance awaits you. Friends may shift into lovers. Honor your need for freedom inside committed relationships.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Innovation and community projects drive your progress. New friends bring creative opportunities to turn original ideas into tangible results.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Erratic sleep patterns drain your vitality. Fix your bedtime routine to keep your energy steady through the year.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Pisces 2026 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Pisces ♓</h3>
-                    <div class="date-range">Feb 19 – Mar 20</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Intuitive, soulful romance fills your year. Your sensitivity creates magical romantic moments. Learn firm emotional boundaries to avoid burnout.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Your intuition and creative gifts grow stronger. Artistic projects bring inspiration, but protect your energy from energy vampires at work.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">You easily absorb negativity from others. Meditation helps you separate your own feelings from surrounding emotional noise.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 2027 Yearly -->
-    <div class="tab-content" id="year27">
-        <div class="zodiac-grid">
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Aries 2027 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Aries ♈</h3>
-                    <div class="date-range">Mar 21 – Apr 19</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">After the fiery energy of 2026, your romantic life matures and settles. Singles may meet serious long-term partners. Couples build deeper mutual respect.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">2027 focuses on sustainable growth and strategic planning. Career chances keep flowing, yet you must build long-term systems instead of chasing quick wins.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Stress management becomes your top priority. Build consistent workout habits to release pressure before it builds up.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Taurus 2027 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Taurus ♉</h3>
-                    <div class="date-range">Apr 20 – May 20</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Your romantic life stays calm and loyal. Couples may invest in home upgrades and create cozy shared spaces together this year.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Assets and family comfort expand. Savings accumulated in 2026 create bigger opportunities. Property plans are highly favored in 2027.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Maintain steady diet and light movement. Avoid sudden indulgence that disrupts your stable physical balance.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Gemini 2027 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Gemini ♊</h3>
-                    <div class="date-range">May 21 – Jun 21</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Short connections formed in 2026 deepen into lasting bonds. Your honest communication builds trust that carries your relationship forward.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">You deepen existing professional connections. This year suits writing, teaching and media work. Practice sustained focus instead of jumping between tasks.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Your mental stability improves greatly. Train your focus and reduce scattered thinking to preserve your mental clarity.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Cancer 2027 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Cancer ♋</h3>
-                    <div class="date-range">Jun 22 – Jul 22</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Your love becomes safe and nurturing. Family ties grow stronger and bring peace and stability to your romantic partnerships.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">You build secure, lasting home foundations. If you healed old wounds in 2026, you get to enjoy peaceful home-centered progress this year.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Emotional recovery continues. Hold firm boundaries to guard your inner peace and prevent emotional overload.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Leo 2027 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Leo ♌</h3>
-                    <div class="date-range">Jul 23 – Aug 22</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Romance can shift into serious commitment. Your love grows deeper and less superficial, built on mutual respect rather than outward glamour.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Turn past recognition into sustainable success. Build reliable income streams and protect your reputation for long-term gains.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Avoid overcommitting to social obligations. Balance busy events with quiet downtime to recharge your spirit.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Virgo 2027 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Virgo ♍</h3>
-                    <div class="date-range">Aug 23 – Sep 22</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Your romantic life relaxes. You gradually learn to accept imperfections in your partner and yourself, softening old rigid expectations.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Healthy habits you built previously pay off. Work runs smoothly, and you learn to accept imperfection in ongoing projects.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">All small improvements you started in 2026 bear fruit. Your mental wellbeing makes huge strides in 2027.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Libra 2027 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Libra ♎</h3>
-                    <div class="date-range">Sep 23 – Oct 23</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Long-term stable partnerships take shape. Relationships started in 2026 may evolve into lifelong committed bonds.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">This year favors marriage and co-founded business ventures. You release the old habit of trying to please every person around you.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Inner calm arrives naturally. Anxiety fades, and you find better daily balance between responsibilities and rest.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Scorpio 2027 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Scorpio ♏</h3>
-                    <div class="date-range">Oct 24 – Nov 22</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Sincere, deep love comes into your sphere. After necessary endings in 2026, loyal and authentic romantic connections may arrive.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">This is a rebuilding year. You construct new life structures. Research, investment and deep focused work bring excellent returns.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Old emotional wounds continue healing. Trust bodily intuition and respond promptly to physical warning signs.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Sagittarius 2027 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Sagittarius ♐</h3>
-                    <div class="date-range">Nov 23 – Dec 21</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Romance blooms during travel or study journeys. You meet partners who share your curiosity and hunger for discovery.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Long journeys and deep learning define your path. Trips and education you began in 2026 continue progressing toward meaningful results.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Keep your body active. Take precautions and protect yourself during long-distance trips and outdoor adventures.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Capricorn 2027 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Capricorn ♑</h3>
-                    <div class="date-range">Dec 22 – Jan 19</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Quiet, dependable love anchors you. Your partner offers steady support for your career goals and long-term ambitions.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Stable career gains appear. Your hard work reaches a milestone, and your overall financial security grows stronger throughout the year.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Do not sacrifice rest for endless work tasks. Schedule regular relaxation to avoid chronic fatigue.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Aquarius 2027 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Aquarius ♒</h3>
-                    <div class="date-range">Jan 20 – Feb 18</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Unique soulful connections await. Your partner respects your freedom and supports your creative ideas and independent pursuits.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Creative concepts turn into tangible results. Community and group projects grow larger and bring more influence as the year unfolds.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Group activities can drain your energy. Keep reserved alone time to recharge and avoid burnout from social overload.</p>
-                </div>
-            </div>
-
-            <div class="zodiac-card">
-                <div class="card-img" aria-label="Pisces 2027 cosmic background"></div>
-                <div class="card-body">
-                    <h3>Pisces ♓</h3>
-                    <div class="date-range">Feb 19 – Mar 20</div>
-                    <div class="section-title">❤️ Love</div>
-                    <p class="desc">Deep spiritual romance unfolds. Your intuition guides you toward gentle, soul-aligned partners who honor your sensitive nature.</p>
-                    <div class="section-title">💼 Career</div>
-                    <p class="desc">Your spiritual and creative gifts deepen. Artistic projects gain recognition and bring new opportunities for creative expression.</p>
-                    <div class="section-title">🌿 Health</div>
-                    <p class="desc">Boundaries learned in 2026 protect your energy. Enjoy your intuitive gifts without absorbing the stress of everyone around you.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>© 2026 CosmicMatch.top | All horoscopes for entertainment only</p>
-    </footer>
+<div class="nav-top">
+  <a href="/">Home</a>
+  <a href="/privacy-policy.html">Privacy Policy</a>
 </div>
 
-<script>
-    // 全局星空
-    const starsWrap = document.querySelector('.stars');
-    for (let i = 0; i < 120; i++) {
-        const s = document.createElement('div');
-        s.classList.add('star');
-        const size = Math.random() * 2.4 + 0.4;
-        s.style.width = size + 'px';
-        s.style.height = size + 'px';
-        s.style.left = Math.random() * 100 + '%';
-        s.style.top = Math.random() * 100 + '%';
-        s.style.animationDelay = Math.random() * 3 + 's';
-        s.style.animationDuration = (Math.random() * 2 + 2) + 's';
-        starsWrap.appendChild(s);
-    }
+<div class="tab-wrap">
+  <button class="tab-btn active" data-target="daily">Daily Horoscope</button>
+  <button class="tab-btn" data-target="monthly">Monthly Horoscope</button>
+  <button class="tab-btn" data-target="year26">2026 Yearly</button>
+  <button class="tab-btn" data-target="year27">2027 Yearly</button>
+</div>
 
-    // 标签切换
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    tabBtns.forEach(btn => {
-        btn.onclick = function () {
-            const targetTab = this.dataset.tab;
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            this.classList.add('active');
-            document.getElementById(targetTab).classList.add('active');
-        };
+<div class="container">
+
+  <!-- ========== DAILY ========== -->
+  <div id="daily" class="tab-content active">
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="aries-art"></div>
+        <div class="zodiac-symbol">♈</div>
+        <div class="glows">
+          <div class="glow" style="left:10%;top:10%;width:180px;height:180px;background:#ff7096;"></div>
+          <div class="glow" style="right:14%;bottom:16%;width:140px;height:140px;background:#ffb070;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:14%;bottom:18%;width:18px;height:18px;animation-delay:0.4s;"></div>
+          <div class="bubble" style="left:44%;top:14%;width:10px;height:10px;animation-delay:1.2s;"></div>
+          <div class="bubble" style="right:22%;bottom:28%;width:26px;height:26px;animation-delay:2s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Aries ♈</h3>
+        <p class="date-range">Mar 21 – Apr 19</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Your bold energy draws fresh romantic attention today. Single Rams may cross paths with someone who matches your passion.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Small leadership opportunities appear. Trust your instinct when making quick work decisions.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Try light stretching to release built-up tension. Don’t push your body past its limits.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="taurus-art"></div>
+        <div class="zodiac-symbol">♉</div>
+        <div class="glows">
+          <div class="glow" style="left:14%;top:14%;width:170px;height:170px;background:#40ffb0;"></div>
+          <div class="glow" style="right:10%;bottom:20%;width:150px;height:150px;background:#90ffd0;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:20%;bottom:22%;width:22px;height:22px;animation-delay:0.6s;"></div>
+          <div class="bubble" style="right:28%;top:18%;width:12px;height:12px;animation-delay:1.6s;"></div>
+          <div class="bubble" style="right:14%;bottom:32%;width:16px;height:16px;animation-delay:2.4s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Taurus ♉</h3>
+        <p class="date-range">Apr 20 – May 20</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Soft, quiet intimacy fills your romantic sphere. Attached Taureans will appreciate small, thoughtful gestures.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Slow steady progress pays off. Avoid rushing new projects; careful planning wins the day.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Focus on restful sleep. Overworking drains your natural vitality quickly.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="gemini-art"></div>
+        <div class="zodiac-symbol">♊</div>
+        <div class="glows">
+          <div class="glow" style="left:12%;top:12%;width:180px;height:180px;background:#9060ff;"></div>
+          <div class="glow" style="right:12%;bottom:18%;width:160px;height:160px;background:#c080ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:16%;bottom:24%;width:20px;height:20px;animation-delay:0.8s;"></div>
+          <div class="bubble" style="left:50%;top:16%;width:14px;height:14px;animation-delay:1.4s;"></div>
+          <div class="bubble" style="right:20%;bottom:30%;width:24px;height:24px;animation-delay:2.2s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Gemini ♊</h3>
+        <p class="date-range">May 21 – Jun 21</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Witty conversation becomes your romantic superpower. Singles attract admirers through humor.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Network chats bring useful new information. Keep notes from casual work conversations.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Short walks outside refresh your busy mind. Give your brain small breaks often.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="cancer-art"></div>
+        <div class="zodiac-symbol">♋</div>
+        <div class="glows">
+          <div class="glow" style="left:16%;top:16%;width:160px;height:160px;background:#60b0ff;"></div>
+          <div class="glow" style="right:14%;bottom:22%;width:140px;height:140px;background:#90d0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:22%;bottom:20%;width:18px;height:18px;animation-delay:0.5s;"></div>
+          <div class="bubble" style="right:30%;top:20%;width:10px;height:10px;animation-delay:1.3s;"></div>
+          <div class="bubble" style="right:16%;bottom:28%;width:22px;height:22px;animation-delay:2.1s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Cancer ♋</h3>
+        <p class="date-range">Jun 22 – Jul 22</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Your nurturing side shines. Loved ones seek your comfort and emotional support today.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Teamwork will be key. Listen carefully to colleagues’ feelings alongside facts.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Protect your emotional energy. Don’t absorb stress from people around you.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="leo-art"></div>
+        <div class="zodiac-symbol">♌</div>
+        <div class="glows">
+          <div class="glow" style="left:10%;top:10%;width:190px;height:190px;background:#ffb040;"></div>
+          <div class="glow" style="right:10%;bottom:18%;width:150px;height:150px;background:#ffd060;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:18%;bottom:24%;width:24px;height:24px;animation-delay:0.7s;"></div>
+          <div class="bubble" style="left:48%;top:14%;width:12px;height:12px;animation-delay:1.5s;"></div>
+          <div class="bubble" style="right:24%;bottom:32%;width:20px;height:20px;animation-delay:2.3s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Leo ♌</h3>
+        <p class="date-range">Jul 23 – Aug 22</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Your warmth magnetizes others. Romantic moments feel bright and memorable today.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Your creative ideas get recognition. Speak up confidently in meetings.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Fun movement like dancing lifts your mood and energy level.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="virgo-art"></div>
+        <div class="zodiac-symbol">♍</div>
+        <div class="glows">
+          <div class="glow" style="left:14%;top:14%;width:170px;height:170px;background:#c080ff;"></div>
+          <div class="glow" style="right:14%;bottom:20%;width:150px;height:150px;background:#e0a0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:20%;bottom:22%;width:20px;height:20px;animation-delay:0.9s;"></div>
+          <div class="bubble" style="right:28%;top:18%;width:14px;height:14px;animation-delay:1.7s;"></div>
+          <div class="bubble" style="right:12%;bottom:30%;width:22px;height:22px;animation-delay:2.5s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Virgo ♍</h3>
+        <p class="date-range">Aug 23 – Sep 22</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Small practical acts of care show your affection deeply to your partner.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Detail work will prevent future problems. Double-check important documents.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Keep hydration steady. Minor digestion issues may appear if you skip water.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="libra-art"></div>
+        <div class="zodiac-symbol">♎</div>
+        <div class="glows">
+          <div class="glow" style="left:12%;top:12%;width:180px;height:180px;background:#ff90d0;"></div>
+          <div class="glow" style="right:12%;bottom:18%;width:160px;height:160px;background:#90a0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:18%;bottom:24%;width:22px;height:22px;animation-delay:1s;"></div>
+          <div class="bubble" style="left:46%;top:16%;width:12px;height:12px;animation-delay:1.8s;"></div>
+          <div class="bubble" style="right:22%;bottom:32%;width:20px;height:20px;animation-delay:2.6s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Libra ♎</h3>
+        <p class="date-range">Sep 23 – Oct 23</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Seek balance in relationships. Gentle honest talks clear small misunderstandings.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Mediation skills help resolve workplace disagreements smoothly.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Find quiet time to restore inner peace. Too much social input drains you.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="scorpio-art"></div>
+        <div class="zodiac-symbol">♏</div>
+        <div class="glows">
+          <div class="glow" style="left:10%;top:10%;width:190px;height:190px;background:#8030ff;"></div>
+          <div class="glow" style="right:10%;bottom:18%;width:150px;height:150px;background:#c040ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:16%;bottom:22%;width:24px;height:24px;animation-delay:1.1s;"></div>
+          <div class="bubble" style="left:44%;top:14%;width:10px;height:10px;animation-delay:1.9s;"></div>
+          <div class="bubble" style="right:24%;bottom:30%;width:18px;height:18px;animation-delay:2.7s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Scorpio ♏</h3>
+        <p class="date-range">Oct 24 – Nov 22</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Deep emotional connections are highlighted. Trust your gut about new people.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Investigate hidden details. Your sharp observation helps uncover missing information.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Release old mental worries. Holding stress creates physical tightness.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="sagittarius-art"></div>
+        <div class="zodiac-symbol">♐</div>
+        <div class="glows">
+          <div class="glow" style="left:12%;top:12%;width:180px;height:180px;background:#4080ff;"></div>
+          <div class="glow" style="right:12%;bottom:18%;width:160px;height:160px;background:#70b0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:20%;bottom:24%;width:22px;height:22px;animation-delay:1.2s;"></div>
+          <div class="bubble" style="left:48%;top:16%;width:14px;height:14px;animation-delay:2s;"></div>
+          <div class="bubble" style="right:20%;bottom:32%;width:20px;height:20px;animation-delay:2.8s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Sagittarius ♐</h3>
+        <p class="date-range">Nov 23 – Dec 21</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Adventurous vibes in romance. New experiences bring you and your partner closer.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Learning new skills opens future doors. Explore training opportunities.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Outdoor activity matches your spirit. A hike or long walk is ideal.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="capricorn-art"></div>
+        <div class="zodiac-symbol">♑</div>
+        <div class="glows">
+          <div class="glow" style="left:14%;top:14%;width:170px;height:170px;background:#60a0ff;"></div>
+          <div class="glow" style="right:14%;bottom:20%;width:150px;height:150px;background:#90d0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:18%;bottom:22%;width:20px;height:20px;animation-delay:1.3s;"></div>
+          <div class="bubble" style="right:28%;top:18%;width:12px;height:12px;animation-delay:2.1s;"></div>
+          <div class="bubble" style="right:12%;bottom:30%;width:24px;height:24px;animation-delay:2.9s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Capricorn ♑</h3>
+        <p class="date-range">Dec 22 – Jan 19</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Stable, long-term bonds feel secure. Show your commitment with reliable actions.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Your hard work slowly gains recognition. Keep building toward big goals.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Watch posture when working long hours. Stretch shoulders and back daily.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="aquarius-art"></div>
+        <div class="zodiac-symbol">♒</div>
+        <div class="glows">
+          <div class="glow" style="left:16%;top:16%;width:160px;height:160px;background:#40e0ff;"></div>
+          <div class="glow" style="right:16%;bottom:22%;width:140px;height:140px;background:#80ffff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:22%;bottom:24%;width:18px;height:18px;animation-delay:1.4s;"></div>
+          <div class="bubble" style="left:52%;top:20%;width:10px;height:10px;animation-delay:2.2s;"></div>
+          <div class="bubble" style="right:18%;bottom:32%;width:22px;height:22px;animation-delay:3s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Aquarius ♒</h3>
+        <p class="date-range">Jan 20 – Feb 18</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Unique connections appear. Freedom and respect matter most in love.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Original ideas get attention. Don’t hesitate to share unconventional plans.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Social time with friends boosts mental health. Don’t isolate yourself too much.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="pisces-art"></div>
+        <div class="zodiac-symbol">♓</div>
+        <div class="glows">
+          <div class="glow" style="left:12%;top:12%;width:180px;height:180px;background:#ff90e0;"></div>
+          <div class="glow" style="right:12%;bottom:18%;width:160px;height:160px;background:#a0b0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:18%;bottom:22%;width:22px;height:22px;animation-delay:1.5s;"></div>
+          <div class="bubble" style="left:46%;top:16%;width:14px;height:14px;animation-delay:2.3s;"></div>
+          <div class="bubble" style="right:22%;bottom:30%;width:20px;height:20px;animation-delay:3.1s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Pisces ♓</h3>
+        <p class="date-range">Feb 19 – Mar 20</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Romantic fantasy and gentle empathy flow strongly. Listen deeply to your partner.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Intuition guides good creative decisions. Trust your inner creative voice.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Sleep and quiet meditation help reset your sensitive nervous system.</p></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========== MONTHLY ========== -->
+  <div id="monthly" class="tab-content">
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="aries-art"></div>
+        <div class="zodiac-symbol">♈</div>
+        <div class="glows">
+          <div class="glow" style="left:10%;top:10%;width:180px;height:180px;background:#ff7096;"></div>
+          <div class="glow" style="right:14%;bottom:16%;width:140px;height:140px;background:#ffb070;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:14%;bottom:18%;width:18px;height:18px;animation-delay:0.4s;"></div>
+          <div class="bubble" style="left:44%;top:14%;width:10px;height:10px;animation-delay:1.2s;"></div>
+          <div class="bubble" style="right:22%;bottom:28%;width:26px;height:26px;animation-delay:2s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Aries ♈</h3>
+        <p class="date-range">Mar 21 – Apr 19</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Passion grows this month. Singles may meet a bold new person; couples enjoy spontaneous adventures together.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>New project launches favor you. Be careful not to rush past small critical details.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Active exercise suits your energy, but avoid burnout by scheduling rest days.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="taurus-art"></div>
+        <div class="zodiac-symbol">♉</div>
+        <div class="glows">
+          <div class="glow" style="left:14%;top:14%;width:170px;height:170px;background:#40ffb0;"></div>
+          <div class="glow" style="right:10%;bottom:20%;width:150px;height:150px;background:#90ffd0;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:20%;bottom:22%;width:22px;height:22px;animation-delay:0.6s;"></div>
+          <div class="bubble" style="right:28%;top:18%;width:12px;height:12px;animation-delay:1.6s;"></div>
+          <div class="bubble" style="right:14%;bottom:32%;width:16px;height:16px;animation-delay:2.4s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Taurus ♉</h3>
+        <p class="date-range">Apr 20 – May 20</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Deep security arrives in romance. Small gifts and shared meals strengthen your bond this month.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Financial progress moves slowly but reliably. Long term investments are favored.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Stick to consistent routines for diet and sleep; your body thrives on rhythm.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="gemini-art"></div>
+        <div class="zodiac-symbol">♊</div>
+        <div class="glows">
+          <div class="glow" style="left:12%;top:12%;width:180px;height:180px;background:#9060ff;"></div>
+          <div class="glow" style="right:12%;bottom:18%;width:160px;height:160px;background:#c080ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:16%;bottom:24%;width:20px;height:20px;animation-delay:0.8s;"></div>
+          <div class="bubble" style="left:50%;top:16%;width:14px;height:14px;animation-delay:1.4s;"></div>
+          <div class="bubble" style="right:20%;bottom:30%;width:24px;height:24px;animation-delay:2.2s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Gemini ♊</h3>
+        <p class="date-range">May 21 – Jun 21</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Flirty communication lights up your love life. Conversations build attraction all month long.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Writing, calls and networking create opportunities. Keep all your notes organized.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Mental rest is vital. Your mind runs fast; carve out quiet moments daily.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="cancer-art"></div>
+        <div class="zodiac-symbol">♋</div>
+        <div class="glows">
+          <div class="glow" style="left:16%;top:16%;width:160px;height:160px;background:#60b0ff;"></div>
+          <div class="glow" style="right:14%;bottom:22%;width:140px;height:140px;background:#90d0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:22%;bottom:20%;width:18px;height:18px;animation-delay:0.5s;"></div>
+          <div class="bubble" style="right:30%;top:20%;width:10px;height:10px;animation-delay:1.3s;"></div>
+          <div class="bubble" style="right:16%;bottom:28%;width:22px;height:22px;animation-delay:2.1s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Cancer ♋</h3>
+        <p class="date-range">Jun 22 – Jul 22</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Home and family take center stage. Create cozy shared moments with your beloved.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Team support helps you hit milestones. Lean on trusted teammates when stressed.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Mood is linked to your environment. Keep your living space calm and tidy.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="leo-art"></div>
+        <div class="zodiac-symbol">♌</div>
+        <div class="glows">
+          <div class="glow" style="left:10%;top:10%;width:190px;height:190px;background:#ffb040;"></div>
+          <div class="glow" style="right:10%;bottom:18%;width:150px;height:150px;background:#ffd060;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:18%;bottom:24%;width:24px;height:24px;animation-delay:0.7s;"></div>
+          <div class="bubble" style="left:48%;top:14%;width:12px;height:12px;animation-delay:1.5s;"></div>
+          <div class="bubble" style="right:24%;bottom:32%;width:20px;height:20px;animation-delay:2.3s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Leo ♌</h3>
+        <p class="date-range">Jul 23 – Aug 22</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Romance shines brightly. You receive admiration, enjoy heartfelt compliments this month.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Your creative projects gain audience attention. Show your work confidently.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Heart-opening joyful activities boost vitality. Make time for fun.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="virgo-art"></div>
+        <div class="zodiac-symbol">♍</div>
+        <div class="glows">
+          <div class="glow" style="left:14%;top:14%;width:170px;height:170px;background:#c080ff;"></div>
+          <div class="glow" style="right:14%;bottom:20%;width:150px;height:150px;background:#e0a0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:20%;bottom:22%;width:20px;height:20px;animation-delay:0.9s;"></div>
+          <div class="bubble" style="right:28%;top:18%;width:14px;height:14px;animation-delay:1.7s;"></div>
+          <div class="bubble" style="right:12%;bottom:30%;width:22px;height:22px;animation-delay:2.5s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Virgo ♍</h3>
+        <p class="date-range">Aug 23 – Sep 22</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Service and care are your love language. Practical help makes your partner feel cherished.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Organizing tasks clears bottlenecks at work. Fix small problems before they grow big.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Small daily healthy habits compound to big improvements this month.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="libra-art"></div>
+        <div class="zodiac-symbol">♎</div>
+        <div class="glows">
+          <div class="glow" style="left:12%;top:12%;width:180px;height:180px;background:#ff90d0;"></div>
+          <div class="glow" style="right:12%;bottom:18%;width:160px;height:160px;background:#90a0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:18%;bottom:24%;width:22px;height:22px;animation-delay:1s;"></div>
+          <div class="bubble" style="left:46%;top:16%;width:12px;height:12px;animation-delay:1.8s;"></div>
+          <div class="bubble" style="right:22%;bottom:32%;width:20px;height:20px;animation-delay:2.6s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Libra ♎</h3>
+        <p class="date-range">Sep 23 – Oct 23</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Relationship harmony is your theme. Resolve old small conflicts gently this month.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Negotiations go smoothly. Your diplomacy helps reach fair agreements.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Balance activity and rest. Avoid overcommitting your schedule.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="scorpio-art"></div>
+        <div class="zodiac-symbol">♏</div>
+        <div class="glows">
+          <div class="glow" style="left:10%;top:10%;width:190px;height:190px;background:#8030ff;"></div>
+          <div class="glow" style="right:10%;bottom:18%;width:150px;height:150px;background:#c040ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:16%;bottom:22%;width:24px;height:24px;animation-delay:1.1s;"></div>
+          <div class="bubble" style="left:44%;top:14%;width:10px;height:10px;animation-delay:1.9s;"></div>
+          <div class="bubble" style="right:24%;bottom:30%;width:18px;height:18px;animation-delay:2.7s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Scorpio ♏</h3>
+        <p class="date-range">Oct 24 – Nov 22</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Deep emotional transformation in love. Secrets may come out, bringing greater intimacy.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Research and investigation projects succeed. Dig beneath surface information.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Let go of grudges. Unreleased stress impacts your physical wellbeing.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="sagittarius-art"></div>
+        <div class="zodiac-symbol">♐</div>
+        <div class="glows">
+          <div class="glow" style="left:12%;top:12%;width:180px;height:180px;background:#4080ff;"></div>
+          <div class="glow" style="right:12%;bottom:18%;width:160px;height:160px;background:#70b0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:20%;bottom:24%;width:22px;height:22px;animation-delay:1.2s;"></div>
+          <div class="bubble" style="left:48%;top:16%;width:14px;height:14px;animation-delay:2s;"></div>
+          <div class="bubble" style="right:20%;bottom:32%;width:20px;height:20px;animation-delay:2.8s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Sagittarius ♐</h3>
+        <p class="date-range">Nov 23 – Dec 21</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Travel and learning fuel romance. Trips or classes help you connect with someone special.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Education and training create future career doors. Sign up for new learning opportunities.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Movement outdoors keeps your energy high. Explore new walking trails.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="capricorn-art"></div>
+        <div class="zodiac-symbol">♑</div>
+        <div class="glows">
+          <div class="glow" style="left:14%;top:14%;width:170px;height:170px;background:#60a0ff;"></div>
+          <div class="glow" style="right:14%;bottom:20%;width:150px;height:150px;background:#90d0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:18%;bottom:22%;width:20px;height:20px;animation-delay:1.3s;"></div>
+          <div class="bubble" style="right:28%;top:18%;width:12px;height:12px;animation-delay:2.1s;"></div>
+          <div class="bubble" style="right:12%;bottom:30%;width:24px;height:24px;animation-delay:2.9s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Capricorn ♑</h3>
+        <p class="date-range">Dec 22 – Jan 19</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Serious commitments may form. You value reliability and long-term loyalty in partners.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Long term goals advance. Consistent daily effort builds big results over time.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Bones, joints and posture need care. Gentle yoga is a great match this month.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="aquarius-art"></div>
+        <div class="zodiac-symbol">♒</div>
+        <div class="glows">
+          <div class="glow" style="left:16%;top:16%;width:160px;height:160px;background:#40e0ff;"></div>
+          <div class="glow" style="right:16%;bottom:22%;width:140px;height:140px;background:#80ffff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:22%;bottom:24%;width:18px;height:18px;animation-delay:1.4s;"></div>
+          <div class="bubble" style="left:52%;top:20%;width:10px;height:10px;animation-delay:2.2s;"></div>
+          <div class="bubble" style="right:18%;bottom:32%;width:22px;height:22px;animation-delay:3s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Aquarius ♒</h3>
+        <p class="date-range">Jan 20 – Feb 18</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Unconventional romance appears. Intellectual connection matters more than looks.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Innovation and new tech ideas get noticed. Don’t fear unique proposals.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Group activities are good for mental health. Join hobby communities.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="pisces-art"></div>
+        <div class="zodiac-symbol">♓</div>
+        <div class="glows">
+          <div class="glow" style="left:12%;top:12%;width:180px;height:180px;background:#ff90e0;"></div>
+          <div class="glow" style="right:12%;bottom:18%;width:160px;height:160px;background:#a0b0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:18%;bottom:22%;width:22px;height:22px;animation-delay:1.5s;"></div>
+          <div class="bubble" style="left:46%;top:16%;width:14px;height:14px;animation-delay:2.3s;"></div>
+          <div class="bubble" style="right:22%;bottom:30%;width:20px;height:20px;animation-delay:3.1s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Pisces ♓</h3>
+        <p class="date-range">Feb 19 – Mar 20</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>Dreamy, compassionate romance. Empathy deepens your romantic bonds this month.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Creative and artistic work shines. Follow intuition for creative direction.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Restorative sleep and water therapy soothe your sensitive nervous system.</p></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========== 2026 YEARLY ========== -->
+  <div id="year26" class="tab-content">
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="aries-art"></div>
+        <div class="zodiac-symbol">♈</div>
+        <div class="glows">
+          <div class="glow" style="left:10%;top:10%;width:180px;height:180px;background:#ff7096;"></div>
+          <div class="glow" style="right:14%;bottom:16%;width:140px;height:140px;background:#ffb070;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:14%;bottom:18%;width:18px;height:18px;animation-delay:0.4s;"></div>
+          <div class="bubble" style="left:44%;top:14%;width:10px;height:10px;animation-delay:1.2s;"></div>
+          <div class="bubble" style="right:22%;bottom:28%;width:26px;height:26px;animation-delay:2s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Aries ♈</h3>
+        <p class="date-range">Mar 21 – Apr 19</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2026 brings bold romantic chapters. Singles may meet passionate partners; existing relationships enjoy new adventures together.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Major new openings arrive for your career. Your courage helps you seize opportunities others avoid.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Focus on sustainable fitness. Avoid reckless overtraining; balance energy and rest all year.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="taurus-art"></div>
+        <div class="zodiac-symbol">♉</div>
+        <div class="glows">
+          <div class="glow" style="left:14%;top:14%;width:170px;height:170px;background:#40ffb0;"></div>
+          <div class="glow" style="right:10%;bottom:20%;width:150px;height:150px;background:#90ffd0;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:20%;bottom:22%;width:22px;height:22px;animation-delay:0.6s;"></div>
+          <div class="bubble" style="right:28%;top:18%;width:12px;height:12px;animation-delay:1.6s;"></div>
+          <div class="bubble" style="right:14%;bottom:32%;width:16px;height:16px;animation-delay:2.4s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Taurus ♉</h3>
+        <p class="date-range">Apr 20 – May 20</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2026 builds lasting love foundations. Your relationships grow more stable and secure throughout the year.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Wealth grows slowly and steadily. Patient long-term investments and consistent work reward you greatly.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Consistent daily self-care protects your wellbeing. Keep stable sleep and meal routines.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="gemini-art"></div>
+        <div class="zodiac-symbol">♊</div>
+        <div class="glows">
+          <div class="glow" style="left:12%;top:12%;width:180px;height:180px;background:#9060ff;"></div>
+          <div class="glow" style="right:12%;bottom:18%;width:160px;height:160px;background:#c080ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:16%;bottom:24%;width:20px;height:20px;animation-delay:0.8s;"></div>
+          <div class="bubble" style="left:50%;top:16%;width:14px;height:14px;animation-delay:1.4s;"></div>
+          <div class="bubble" style="right:20%;bottom:30%;width:24px;height:24px;animation-delay:2.2s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Gemini ♊</h3>
+        <p class="date-range">May 21 – Jun 21</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2026 romance centers on communication. Many meaningful conversations transform your love life this year.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Learning, writing and networking open new professional doors. Multiple income streams may appear.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Mental fatigue is your main risk. Schedule regular brain breaks all year long.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="cancer-art"></div>
+        <div class="zodiac-symbol">♋</div>
+        <div class="glows">
+          <div class="glow" style="left:16%;top:16%;width:160px;height:160px;background:#60b0ff;"></div>
+          <div class="glow" style="right:14%;bottom:22%;width:140px;height:140px;background:#90d0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:22%;bottom:20%;width:18px;height:18px;animation-delay:0.5s;"></div>
+          <div class="bubble" style="right:30%;top:20%;width:10px;height:10px;animation-delay:1.3s;"></div>
+          <div class="bubble" style="right:16%;bottom:28%;width:22px;height:22px;animation-delay:2.1s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Cancer ♋</h3>
+        <p class="date-range">Jun 22 – Jul 22</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2026 focuses on home and family love. Many Cancers will improve living spaces and deepen family bonds.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Team-based projects thrive. Your emotional intelligence becomes a major professional strength.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Protect your emotional boundaries. Absorbing others’ stress will drain your health this year.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="leo-art"></div>
+        <div class="zodiac-symbol">♌</div>
+        <div class="glows">
+          <div class="glow" style="left:10%;top:10%;width:190px;height:190px;background:#ffb040;"></div>
+          <div class="glow" style="right:10%;bottom:18%;width:150px;height:150px;background:#ffd060;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:18%;bottom:24%;width:24px;height:24px;animation-delay:0.7s;"></div>
+          <div class="bubble" style="left:48%;top:14%;width:12px;height:12px;animation-delay:1.5s;"></div>
+          <div class="bubble" style="right:24%;bottom:32%;width:20px;height:20px;animation-delay:2.3s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Leo ♌</h3>
+        <p class="date-range">Jul 23 – Aug 22</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2026 brings bright romantic spotlight. You gain admirers, and existing relationships grow more passionate.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Creative work and leadership opportunities arrive. Your confidence attracts recognition.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Joy and play keep your body strong. Don’t let work steal all your fun time.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="virgo-art"></div>
+        <div class="zodiac-symbol">♍</div>
+        <div class="glows">
+          <div class="glow" style="left:14%;top:14%;width:170px;height:170px;background:#c080ff;"></div>
+          <div class="glow" style="right:14%;bottom:20%;width:150px;height:150px;background:#e0a0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:20%;bottom:22%;width:20px;height:20px;animation-delay:0.9s;"></div>
+          <div class="bubble" style="right:28%;top:18%;width:14px;height:14px;animation-delay:1.7s;"></div>
+          <div class="bubble" style="right:12%;bottom:30%;width:22px;height:22px;animation-delay:2.5s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Virgo ♍</h3>
+        <p class="date-range">Aug 23 – Sep 22</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2026 love grows from small acts of care. Quiet reliability becomes your greatest romantic strength.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Detail work and organization create major wins. You fix systems and reduce chaos around you.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Small daily wellness routines create big improvements for your body this year.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="libra-art"></div>
+        <div class="zodiac-symbol">♎</div>
+        <div class="glows">
+          <div class="glow" style="left:12%;top:12%;width:180px;height:180px;background:#ff90d0;"></div>
+          <div class="glow" style="right:12%;bottom:18%;width:160px;height:160px;background:#90a0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:18%;bottom:24%;width:22px;height:22px;animation-delay:1s;"></div>
+          <div class="bubble" style="left:46%;top:16%;width:12px;height:12px;animation-delay:1.8s;"></div>
+          <div class="bubble" style="right:22%;bottom:32%;width:20px;height:20px;animation-delay:2.6s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Libra ♎</h3>
+        <p class="date-range">Sep 23 – Oct 23</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2026 is a year for relationship balance. Many Libras resolve old conflicts and build fair, loving partnerships.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Negotiation, mediation and design work bring success. Your taste and diplomacy are assets.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Watch schedule overload. Too many commitments create mental and physical tiredness.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="scorpio-art"></div>
+        <div class="zodiac-symbol">♏</div>
+        <div class="glows">
+          <div class="glow" style="left:10%;top:10%;width:190px;height:190px;background:#8030ff;"></div>
+          <div class="glow" style="right:10%;bottom:18%;width:150px;height:150px;background:#c040ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:16%;bottom:22%;width:24px;height:24px;animation-delay:1.1s;"></div>
+          <div class="bubble" style="left:44%;top:14%;width:10px;height:10px;animation-delay:1.9s;"></div>
+          <div class="bubble" style="right:24%;bottom:30%;width:18px;height:18px;animation-delay:2.7s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Scorpio ♏</h3>
+        <p class="date-range">Oct 24 – Nov 22</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2026 brings deep emotional transformation in romance. Old wounds heal and bonds grow more intimate.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Research, investigation and strategic projects reward you. Secrets and hidden opportunities surface.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Release stored trauma and stress. Holding negative emotions harms your physical state long term.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="sagittarius-art"></div>
+        <div class="zodiac-symbol">♐</div>
+        <div class="glows">
+          <div class="glow" style="left:12%;top:12%;width:180px;height:180px;background:#4080ff;"></div>
+          <div class="glow" style="right:12%;bottom:18%;width:160px;height:160px;background:#70b0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:20%;bottom:24%;width:22px;height:22px;animation-delay:1.2s;"></div>
+          <div class="bubble" style="left:48%;top:16%;width:14px;height:14px;animation-delay:2s;"></div>
+          <div class="bubble" style="right:20%;bottom:32%;width:20px;height:20px;animation-delay:2.8s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Sagittarius ♐</h3>
+        <p class="date-range">Nov 23 – Dec 21</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2026 love is tied to travel and learning. New romances can begin on trips or during classes.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Education, travel and publishing create major career advancement this year.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Movement and outdoor exploration keep your body and mind energized all year.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="capricorn-art"></div>
+        <div class="zodiac-symbol">♑</div>
+        <div class="glows">
+          <div class="glow" style="left:14%;top:14%;width:170px;height:170px;background:#60a0ff;"></div>
+          <div class="glow" style="right:14%;bottom:20%;width:150px;height:150px;background:#90d0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:18%;bottom:22%;width:20px;height:20px;animation-delay:1.3s;"></div>
+          <div class="bubble" style="right:28%;top:18%;width:12px;height:12px;animation-delay:2.1s;"></div>
+          <div class="bubble" style="right:12%;bottom:30%;width:24px;height:24px;animation-delay:2.9s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Capricorn ♑</h3>
+        <p class="date-range">Dec 22 – Jan 19</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2026 builds committed, stable love. Serious relationship milestones are possible this year.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Your long hard work finally earns recognition. Career promotions and status gains appear.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Bones, joints and posture are priority. Gentle strength training and stretching help greatly.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="aquarius-art"></div>
+        <div class="zodiac-symbol">♒</div>
+        <div class="glows">
+          <div class="glow" style="left:16%;top:16%;width:160px;height:160px;background:#40e0ff;"></div>
+          <div class="glow" style="right:16%;bottom:22%;width:140px;height:140px;background:#80ffff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:22%;bottom:24%;width:18px;height:18px;animation-delay:1.4s;"></div>
+          <div class="bubble" style="left:52%;top:20%;width:10px;height:10px;animation-delay:2.2s;"></div>
+          <div class="bubble" style="right:18%;bottom:32%;width:22px;height:22px;animation-delay:3s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Aquarius ♒</h3>
+        <p class="date-range">Jan 20 – Feb 18</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2026 romance values freedom and intellect. Unique, non-traditional connections flourish.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Tech, innovation and group projects bring big wins. Your creative original ideas get noticed widely.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Community and friend connections protect your mental health. Don’t isolate yourself.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="pisces-art"></div>
+        <div class="zodiac-symbol">♓</div>
+        <div class="glows">
+          <div class="glow" style="left:12%;top:12%;width:180px;height:180px;background:#ff90e0;"></div>
+          <div class="glow" style="right:12%;bottom:18%;width:160px;height:160px;background:#a0b0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:18%;bottom:22%;width:22px;height:22px;animation-delay:1.5s;"></div>
+          <div class="bubble" style="left:46%;top:16%;width:14px;height:14px;animation-delay:2.3s;"></div>
+          <div class="bubble" style="right:22%;bottom:30%;width:20px;height:20px;animation-delay:3.1s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Pisces ♓</h3>
+        <p class="date-range">Feb 19 – Mar 20</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2026 brings dreamy, compassionate love. Deep empathy creates tender romantic bonds all year.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Art, healing and creative fields shine. Your intuition guides excellent professional choices.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Sleep and gentle water-based therapies soothe your sensitive nervous system all year long.</p></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========== 2027 YEARLY ========== -->
+  <div id="year27" class="tab-content">
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="aries-art"></div>
+        <div class="zodiac-symbol">♈</div>
+        <div class="glows">
+          <div class="glow" style="left:10%;top:10%;width:180px;height:180px;background:#ff7096;"></div>
+          <div class="glow" style="right:14%;bottom:16%;width:140px;height:140px;background:#ffb070;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:14%;bottom:18%;width:18px;height:18px;animation-delay:0.4s;"></div>
+          <div class="bubble" style="left:44%;top:14%;width:10px;height:10px;animation-delay:1.2s;"></div>
+          <div class="bubble" style="right:22%;bottom:28%;width:26px;height:26px;animation-delay:2s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Aries ♈</h3>
+        <p class="date-range">Mar 21 – Apr 19</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2027 opens new romantic chapters. Singles may meet fiery matches; couples explore fresh shared goals together.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Bold new business or job opportunities appear. Courage helps you take big rewarding risks.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Channel your high energy wisely. Mix intense activity with rest to avoid burnout in 2027.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="taurus-art"></div>
+        <div class="zodiac-symbol">♉</div>
+        <div class="glows">
+          <div class="glow" style="left:14%;top:14%;width:170px;height:170px;background:#40ffb0;"></div>
+          <div class="glow" style="right:10%;bottom:20%;width:150px;height:150px;background:#90ffd0;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:20%;bottom:22%;width:22px;height:22px;animation-delay:0.6s;"></div>
+          <div class="bubble" style="right:28%;top:18%;width:12px;height:12px;animation-delay:1.6s;"></div>
+          <div class="bubble" style="right:14%;bottom:32%;width:16px;height:16px;animation-delay:2.4s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Taurus ♉</h3>
+        <p class="date-range">Apr 20 – May 20</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2027 deepens romantic security. Your partnerships grow steady, loyal and deeply comfortable.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Assets and savings build steadily. Patient financial decisions create lasting wealth this year.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Stable routines are your health superpower. Keep consistent eating and sleeping habits.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="gemini-art"></div>
+        <div class="zodiac-symbol">♊</div>
+        <div class="glows">
+          <div class="glow" style="left:12%;top:12%;width:180px;height:180px;background:#9060ff;"></div>
+          <div class="glow" style="right:12%;bottom:18%;width:160px;height:160px;background:#c080ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:16%;bottom:24%;width:20px;height:20px;animation-delay:0.8s;"></div>
+          <div class="bubble" style="left:50%;top:16%;width:14px;height:14px;animation-delay:1.4s;"></div>
+          <div class="bubble" style="right:20%;bottom:30%;width:24px;height:24px;animation-delay:2.2s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Gemini ♊</h3>
+        <p class="date-range">May 21 – Jun 21</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2027 romance thrives on conversation. You will connect deeply through interesting talks and shared ideas.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Media, communication and education bring major growth. Multiple side opportunities appear.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Protect your mental energy. Too much multitasking causes brain fatigue through 2027.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="cancer-art"></div>
+        <div class="zodiac-symbol">♋</div>
+        <div class="glows">
+          <div class="glow" style="left:16%;top:16%;width:160px;height:160px;background:#60b0ff;"></div>
+          <div class="glow" style="right:14%;bottom:22%;width:140px;height:140px;background:#90d0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:22%;bottom:20%;width:18px;height:18px;animation-delay:0.5s;"></div>
+          <div class="bubble" style="right:30%;top:20%;width:10px;height:10px;animation-delay:1.3s;"></div>
+          <div class="bubble" style="right:16%;bottom:28%;width:22px;height:22px;animation-delay:2.1s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Cancer ♋</h3>
+        <p class="date-range">Jun 22 – Jul 22</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2027 centers on home and family love. Many Cancers move house or strengthen family bonds deeply.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Team projects and care-focused work reward you. Your empathy becomes a huge professional asset.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Guard your emotional boundaries. Don’t absorb all the stress of people around you.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="leo-art"></div>
+        <div class="zodiac-symbol">♌</div>
+        <div class="glows">
+          <div class="glow" style="left:10%;top:10%;width:190px;height:190px;background:#ffb040;"></div>
+          <div class="glow" style="right:10%;bottom:18%;width:150px;height:150px;background:#ffd060;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:18%;bottom:24%;width:24px;height:24px;animation-delay:0.7s;"></div>
+          <div class="bubble" style="left:48%;top:14%;width:12px;height:12px;animation-delay:1.5s;"></div>
+          <div class="bubble" style="right:24%;bottom:32%;width:20px;height:20px;animation-delay:2.3s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Leo ♌</h3>
+        <p class="date-range">Jul 23 – Aug 22</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2027 romance is bright and passionate. You attract admirers and existing relationships grow vibrant.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Creative projects, leadership roles bring fame and recognition. Your confidence opens doors.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Joy and creative play keep your vitality high. Make space for fun all year.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="virgo-art"></div>
+        <div class="zodiac-symbol">♍</div>
+        <div class="glows">
+          <div class="glow" style="left:14%;top:14%;width:170px;height:170px;background:#c080ff;"></div>
+          <div class="glow" style="right:14%;bottom:20%;width:150px;height:150px;background:#e0a0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:20%;bottom:22%;width:20px;height:20px;animation-delay:0.9s;"></div>
+          <div class="bubble" style="right:28%;top:18%;width:14px;height:14px;animation-delay:1.7s;"></div>
+          <div class="bubble" style="right:12%;bottom:30%;width:22px;height:22px;animation-delay:2.5s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Virgo ♍</h3>
+        <p class="date-range">Aug 23 – Sep 22</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2027 love comes through quiet care. Practical support and reliability create lasting romantic love.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Optimization, organization and troubleshooting create big professional wins this year.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Small daily healthy habits compound, giving you much better wellness in 2027.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="libra-art"></div>
+        <div class="zodiac-symbol">♎</div>
+        <div class="glows">
+          <div class="glow" style="left:12%;top:12%;width:180px;height:180px;background:#ff90d0;"></div>
+          <div class="glow" style="right:12%;bottom:18%;width:160px;height:160px;background:#90a0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:18%;bottom:24%;width:22px;height:22px;animation-delay:1s;"></div>
+          <div class="bubble" style="left:46%;top:16%;width:12px;height:12px;animation-delay:1.8s;"></div>
+          <div class="bubble" style="right:22%;bottom:32%;width:20px;height:20px;animation-delay:2.6s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Libra ♎</h3>
+        <p class="date-range">Sep 23 – Oct 23</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2027 is for relationship harmony. You can settle disagreements and build balanced, loving partnerships.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Design, law, negotiation work brings excellent results. Your refined taste and diplomacy shine.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Balance your schedule. Too many commitments drain your mental and physical energy quickly.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="scorpio-art"></div>
+        <div class="zodiac-symbol">♏</div>
+        <div class="glows">
+          <div class="glow" style="left:10%;top:10%;width:190px;height:190px;background:#8030ff;"></div>
+          <div class="glow" style="right:10%;bottom:18%;width:150px;height:150px;background:#c040ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:16%;bottom:22%;width:24px;height:24px;animation-delay:1.1s;"></div>
+          <div class="bubble" style="left:44%;top:14%;width:10px;height:10px;animation-delay:1.9s;"></div>
+          <div class="bubble" style="right:24%;bottom:30%;width:18px;height:18px;animation-delay:2.7s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Scorpio ♏</h3>
+        <p class="date-range">Oct 24 – Nov 22</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2027 brings deep romantic transformation. Old relationship patterns fall away for more authentic bonds.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Research, strategy and investigation create breakthroughs. Hidden opportunities will emerge.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Let go of old resentment. Holding heavy emotional baggage impacts long-term physical wellness.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="sagittarius-art"></div>
+        <div class="zodiac-symbol">♐</div>
+        <div class="glows">
+          <div class="glow" style="left:12%;top:12%;width:180px;height:180px;background:#4080ff;"></div>
+          <div class="glow" style="right:12%;bottom:18%;width:160px;height:160px;background:#70b0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:20%;bottom:24%;width:22px;height:22px;animation-delay:1.2s;"></div>
+          <div class="bubble" style="left:48%;top:16%;width:14px;height:14px;animation-delay:2s;"></div>
+          <div class="bubble" style="right:20%;bottom:32%;width:20px;height:20px;animation-delay:2.8s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Sagittarius ♐</h3>
+        <p class="date-range">Nov 23 – Dec 21</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2027 romance links to travel and knowledge. New love may appear on journeys or study programs.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Education, travel and publishing fields bring major career growth this year.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Outdoor activity and exploration keep your energy high through the whole of 2027.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="capricorn-art"></div>
+        <div class="zodiac-symbol">♑</div>
+        <div class="glows">
+          <div class="glow" style="left:14%;top:14%;width:170px;height:170px;background:#60a0ff;"></div>
+          <div class="glow" style="right:14%;bottom:20%;width:150px;height:150px;background:#90d0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:18%;bottom:22%;width:20px;height:20px;animation-delay:1.3s;"></div>
+          <div class="bubble" style="right:28%;top:18%;width:12px;height:12px;animation-delay:2.1s;"></div>
+          <div class="bubble" style="right:12%;bottom:30%;width:24px;height:24px;animation-delay:2.9s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Capricorn ♑</h3>
+        <p class="date-range">Dec 22 – Jan 19</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2027 supports serious committed love. Major long-term relationship milestones are possible.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Your years of hard work finally get rewarded. Promotions and status gains are likely.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Focus on joints, bones and posture. Gentle stretching and low-impact exercise are best.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="aquarius-art"></div>
+        <div class="zodiac-symbol">♒</div>
+        <div class="glows">
+          <div class="glow" style="left:16%;top:16%;width:160px;height:160px;background:#40e0ff;"></div>
+          <div class="glow" style="right:16%;bottom:22%;width:140px;height:140px;background:#80ffff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:22%;bottom:24%;width:18px;height:18px;animation-delay:1.4s;"></div>
+          <div class="bubble" style="left:52%;top:20%;width:10px;height:10px;animation-delay:2.2s;"></div>
+          <div class="bubble" style="right:18%;bottom:32%;width:22px;height:22px;animation-delay:3s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Aquarius ♒</h3>
+        <p class="date-range">Jan 20 – Feb 18</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2027 romance prioritizes freedom and mental connection. Unique, unconventional relationships flourish.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Tech, innovation and community projects bring great success. Your original ideas attract attention.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Friends and social communities support your mental health, avoid long isolation periods.</p></div>
+      </div>
+    </div>
+
+    <div class="zodiac-card">
+      <div class="card-img-area">
+        <div class="pisces-art"></div>
+        <div class="zodiac-symbol">♓</div>
+        <div class="glows">
+          <div class="glow" style="left:12%;top:12%;width:180px;height:180px;background:#ff90e0;"></div>
+          <div class="glow" style="right:12%;bottom:18%;width:160px;height:160px;background:#a0b0ff;"></div>
+        </div>
+        <div class="bubbles">
+          <div class="bubble" style="left:18%;bottom:22%;width:22px;height:22px;animation-delay:1.5s;"></div>
+          <div class="bubble" style="left:46%;top:16%;width:14px;height:14px;animation-delay:2.3s;"></div>
+          <div class="bubble" style="right:22%;bottom:30%;width:20px;height:20px;animation-delay:3.1s;"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="sign-title">Pisces ♓</h3>
+        <p class="date-range">Feb 19 – Mar 20</p>
+        <div class="section-block"><h4>❤️ Love</h4><p>2027 brings tender, dreamy love. Deep compassion creates soft, profound romantic bonds.</p></div>
+        <div class="section-block"><h4>💼 Career</h4><p>Art, healing and creative industries shine. Your intuition guides excellent professional choices.</p></div>
+        <div class="section-block"><h4>🌿 Health</h4><p>Sleep, meditation and gentle water activities soothe your sensitive nervous system all year.</p></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 CosmicMatch.top | All horoscopes for entertainment only</p>
+</footer>
+
+<script>
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.dataset.target;
+
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+
+      btn.classList.add('active');
+      document.getElementById(targetId).classList.add('active');
     });
+  });
 </script>
-
-<!-- Analytics 预留位置 -->
-<!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "你的token"}'></script> -->
-
-<!-- AdSense 预留位置 -->
-<!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxxxxxx" data-ad-slot="xxxxxxx" data-ad-format="auto" data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script> -->
 
 </body>
 </html>
